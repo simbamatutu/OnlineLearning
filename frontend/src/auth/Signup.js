@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import {
   Row,
   Form,
@@ -16,6 +18,7 @@ import {
   faLock,
 } from '@fortawesome/free-solid-svg-icons';
 import Logo from '../resourses/logo (1).png';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const userIcon = <FontAwesomeIcon icon={faUser} className='icon' />;
 const mailIco = <FontAwesomeIcon icon={faEnvelope} className='icon' />;
@@ -161,23 +164,26 @@ export default function Signup() {
             >
               Login
             </Button>
-            <Button
-              style={{
-                backgroundColor: '#005bac',
-                border: 'none',
-                borderRadius: '3%',
-                font: 'Nunito',
-                fontSize: '2.5ch',
-                fontWeight: '600',
-                paddingBottom: '7px',
-                letterSpacing: '3px',
-              }}
-              type='submit'
-              className='mt-3'
-              block
-            >
-              Back
-            </Button>
+
+            <LinkContainer to='/'>
+              <Button
+                style={{
+                  backgroundColor: '#005bac',
+                  border: 'none',
+                  borderRadius: '3%',
+                  font: 'Nunito',
+                  fontSize: '2.5ch',
+                  fontWeight: '600',
+                  paddingBottom: '7px',
+                  letterSpacing: '3px',
+                }}
+                type='submit'
+                className='mt-3'
+                block
+              >
+                Back
+              </Button>
+            </LinkContainer>
           </Form.Group>
         </Form>
         <div className='fixed-bottom p-1' style={{ color: 'whitesmoke' }}>

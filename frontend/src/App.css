@@ -3,3 +3,14 @@
   margin: 0;
   box-sizing: border-box;
 }
+.Hero {
+  background-image: url('./resourses/hero.jpg');
+  background-size: cover;
+  min-height: 50vh;
+  background-repeat: no-repeat;
+  margin: 0;
+}
+
+.activityIndicators {
+  margin-top: -3rem;
+}
