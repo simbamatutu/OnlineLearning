@@ -298,15 +298,10 @@ export default function Homescreen() {
         </Container>
       </div>
       <Container className='activityIndicators'>
-        <Row
-          sm={12}
-          md={6}
-          lg={4}
-          className='row d-flex justify-content-center'
-        >
+        <Row md={12} lg={4} className='row d-flex justify-content-center'>
           <CardGroup
             style={{ boxShadow: '0 5px 7px -5px black' }}
-            className='align-center'
+            className='align-center activitycards'
           >
             <Card className='text-center' style={{ borderRadius: '0' }}>
               <Card.Body>

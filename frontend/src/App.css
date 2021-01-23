@@ -14,3 +14,12 @@
 .activityIndicators {
   margin-top: -3rem;
 }
+@media only screen and (max-width: 600px) {
+  .activitycards {
+    display: inline-flex;
+  }
+
+  .activityIndicators {
+    margin-top: 2rem;
+  }
+}

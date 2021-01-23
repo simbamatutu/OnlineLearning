@@ -11,7 +11,15 @@ import {
   FormControl,
   Button,
 } from 'react-bootstrap';
-import Logo from '../resourses/logo (1).png';
+import fullLogo from '../resourses/logo (1).png';
+import miniLogo from '../resourses/logo.png';
+
+const width =
+  window.innerWidth ||
+  document.documentElement.clientWidth ||
+  document.body.clientWidth;
+
+console.log(width);
 
 export class Header extends Component {
   render() {
@@ -23,7 +31,11 @@ export class Header extends Component {
       >
         <LinkContainer to='/'>
           <Navbar.Brand href='#home'>
-            <img src={Logo} alt='logo-Img' style={{ maxHeight: '5ch' }} />
+            <img
+              src={width <= 1024 ? miniLogo : fullLogo}
+              alt='logo-Img'
+              style={{ maxHeight: '5ch' }}
+            />
           </Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
@@ -74,7 +86,7 @@ export class Header extends Component {
                   placeholder='Search'
                   aria-label='Search Course'
                   aria-describedby='basic-addon1'
-                  style={{ border: '1px solid #005bac', color: 'red' }}
+                  style={{ border: '1px solid #005bac' }}
                 />
 
                 <InputGroup.Append>
@@ -95,8 +107,8 @@ export class Header extends Component {
             </Form>
           </Container>
           <Nav>
-            <LinkContainer to='/Signup'>
-              <Button style={{ backgroundColor: '#005bac' }}>Sign Up</Button>
+            <LinkContainer to='/Signup' style={{ backgroundColor: '#005bac' }}>
+              <Button>Sign Up</Button>
             </LinkContainer>
             <Nav.Link href='/Login' className='navLinks'>
               Log In
