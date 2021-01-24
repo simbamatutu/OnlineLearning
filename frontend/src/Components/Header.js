@@ -108,10 +108,10 @@ export class Header extends Component {
           </Container>
           <Nav>
             <LinkContainer to='/Signup' style={{ backgroundColor: '#005bac' }}>
-              <Button>Sign Up</Button>
+              <Button>SignUp</Button>
             </LinkContainer>
             <Nav.Link href='/Login' className='navLinks'>
-              Log In
+              LogIn
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
