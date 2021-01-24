@@ -1,6 +1,10 @@
 * {
   font-family: 'Nunito', sans-serif;
 }
+:root {
+  --primary-color: #0076c6;
+  --blur: 10px;
+}
 body {
   margin: 0;
   font-family: 'Nunito', sans-serif;

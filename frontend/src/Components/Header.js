@@ -19,8 +19,6 @@ const width =
   document.documentElement.clientWidth ||
   document.body.clientWidth;
 
-console.log(width);
-
 export class Header extends Component {
   render() {
     return (

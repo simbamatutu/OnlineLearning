@@ -16,6 +16,7 @@
     "plugins": [
         "react","prettier"
     ],
+    "parser": "babel-eslint",//this line is foreign
     "rules": {
         
     }

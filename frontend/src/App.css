@@ -11,6 +11,15 @@
   margin: 0;
 }
 
+.courseHeader {
+  background-image: url('./resourses/Library.jpg');
+  background-size: cover;
+  min-height: 30vh;
+  background-repeat: no-repeat;
+
+  background-position: right 20px bottom 10px;
+}
+
 .activityIndicators {
   margin-top: -3rem;
 }
