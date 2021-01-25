@@ -20,7 +20,7 @@ import Courseoverview from '../Components/Courseoverview';
 
 export default function Coursescreen({ match }) {
   const course = courses.find((c) => c._id === match.params.id);
-  console.log(course);
+
   const overviewIcon = (
     <i class='fas fa-bookmark' style={{ color: '#005bac' }}></i>
   );

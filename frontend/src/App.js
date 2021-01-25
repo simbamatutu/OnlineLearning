@@ -5,7 +5,6 @@ import Login from './auth/Login';
 import Homescreen from './Screens/Homescreen';
 import Coursescreen from './Screens/Coursescreen';
 import Courseware from './Screens/Courseware';
-
 function App() {
   return (
     <Router>
@@ -13,7 +12,6 @@ function App() {
         <Route path='/' component={Homescreen} exact />
         <Route path='/Signup' component={Signup} />
         <Route path='/Login' component={Login} />
-
         <Route path='/course/:id' component={Courseware} />
       </main>
     </Router>
