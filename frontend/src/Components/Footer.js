@@ -4,7 +4,13 @@ import { Container, Row, Col } from 'react-bootstrap';
 export class Footer extends Component {
   render() {
     return (
-      <div style={{ color: 'whitesmoke', backgroundColor: '#005bac' }}>
+      <div
+        style={{
+          color: 'whitesmoke',
+          backgroundColor: '#005bac',
+          marginTop: '3rem',
+        }}
+      >
         <Container className='pt-3'>
           <Row>
             <Col>
