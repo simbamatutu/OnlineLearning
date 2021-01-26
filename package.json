@@ -1,0 +1,23 @@
+{
+  "name": "alphacentauri",
+  "version": "1.0.0",
+  "description": "Educational stuff",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simbamatutu/alphaCentauri.git"
+  },
+  "author": "Simba Matutu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simbamatutu/alphaCentauri/issues"
+  },
+  "homepage": "https://github.com/simbamatutu/alphaCentauri#readme"
+}
