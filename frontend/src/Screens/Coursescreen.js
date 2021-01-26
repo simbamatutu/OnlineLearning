@@ -1,5 +1,5 @@
-import React from 'react';
-import courses from '../Course';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Header from '../Components/Header';
 import Teacher from '../Components/Teacher';
 import Footer from '../Components/Footer';
@@ -8,7 +8,6 @@ import { LinkContainer } from 'react-router-bootstrap';
 import {
   Container,
   Tab,
-  ListGroup,
   Row,
   Tabs,
   Col,
@@ -19,9 +18,16 @@ import {
 import Courseoverview from '../Components/Courseoverview';
 
 export default function Coursescreen({ match }) {
-  const course = courses.find((c) => c._id === match.params.id);
+  const [course, setCourse] = useState({});
 
-  const overviewIcon = (
+  useEffect(() => {
+    const fetchCourse = async () => {
+      const { data } = await axios.get(`/api/courses/${match.params.id}`);
+      setCourse(data);
+    };
+    fetchCourse();
+  }, [match]);
+  /*{const overviewIcon = (
     <i class='fas fa-bookmark' style={{ color: '#005bac' }}></i>
   );
   const curriculumIcon = (
@@ -29,7 +35,7 @@ export default function Coursescreen({ match }) {
   );
   const resourcesIcon = (
     <i class='fas fa-book-reader' style={{ color: '#005bac' }}></i>
-  );
+  );*/
   return (
     <React.Fragment>
       <Header />
@@ -100,7 +106,7 @@ export default function Coursescreen({ match }) {
             </Col>
 
             <Col>
-              <Link to={`/course/${course._id}`}>
+              <Link to={`/course/${match.params._id}/${match.params.name}`}>
                 <Button
                   style={{ backgroundColor: '#005bac', border: 'none' }}
                   className='float-right my-3 mx-2'
@@ -114,7 +120,8 @@ export default function Coursescreen({ match }) {
             fill
             defaultActiveKey='overview'
             id='uncontrolled-tab-example'
-            className='my-4 m-1'
+            className='my-4'
+            style={{ borderBottom: 'solid 1px #bebebe' }}
           >
             <Tab eventKey='overview' title='Overview'>
               <Courseoverview
@@ -148,7 +155,7 @@ export default function Coursescreen({ match }) {
             </Tab>
           </Tabs>
         </Card>
-        <div>
+        {/*<div>
           {course.category.map((cat) => (
             <Link
               to={`/Category/${cat}`}
@@ -174,7 +181,7 @@ export default function Coursescreen({ match }) {
               </small>
             </Link>
           ))}
-        </div>
+              </div> */}
       </Container>
       <Footer />
     </React.Fragment>

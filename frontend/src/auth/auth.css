@@ -1,5 +1,5 @@
 .loginScreen {
-  background-image: url('../resourses/museum.jpg');
+  background-image: url('../img/museum.jpg');
   height: 100vh;
   background-repeat: no-repeat;
   background-position: right -1px bottom 0px;
@@ -7,7 +7,6 @@
 }
 .login {
   height: 100vh;
-
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.171);
   backdrop-filter: blur(0.9px);

@@ -1,15 +1,15 @@
 import React from 'react';
 
-import { Container, Media, Card, Row, Col, ListGroup } from 'react-bootstrap';
+import { Image, Media, Card, Row, Col, ListGroup } from 'react-bootstrap';
 export default function Courseoverview(props) {
   return (
     <Row>
       <Col md={9}>
         <Media>
-          <img
-            width={160}
-            height={160}
-            className='p-2'
+          <Image
+            className='my-3 p-1 rounded'
+            minWidth='12rem'
+            minHeight='11rem'
             src={props.courseImg}
             alt='Generic placeholder'
           />
@@ -19,6 +19,7 @@ export default function Courseoverview(props) {
           </Media.Body>
         </Media>
       </Col>
+
       <Col md={3}>
         <Card style={{ marginTop: '4rem' }}>
           <Card.Header style={{ color: '#005bac' }}> Features</Card.Header>

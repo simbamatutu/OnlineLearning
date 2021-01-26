@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 
 function Coursecard(props) {
@@ -15,7 +15,7 @@ function Coursecard(props) {
           variant='top'
           src={props.course.courseImage}
           alt='CoursePic'
-          style={{ maxHeight: '11rem', maxWidth: '14rem' }}
+          style={{ minHeight: '10rem', minWidth: '13rem' }}
         />
       </Link>
       <Card.Body className='p-0'>

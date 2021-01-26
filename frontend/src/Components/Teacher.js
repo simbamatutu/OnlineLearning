@@ -1,14 +1,15 @@
 import React from 'react';
-import { Container, Media, Card } from 'react-bootstrap';
+import { Media, Image } from 'react-bootstrap';
 
 function Teacher(props) {
   return (
     <div>
       <Media>
-        <img
+        <Image
           width={160}
           height={160}
           className='p-2'
+          roundedCircle
           src={props.teacherImg}
           alt='Generic placeholder'
         />

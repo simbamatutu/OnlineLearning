@@ -1,8 +1,8 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
-import courses from '../Course';
+
 import Coursecard from '../Components/Coursecard';
 import {
   Container,
@@ -15,6 +15,15 @@ import {
 } from 'react-bootstrap';
 
 export default function Homescreen() {
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      const { data } = await axios.get('/api/courses');
+      setCourses(data);
+    };
+    fetchCourses();
+  }, []);
   return (
     <React.Fragment>
       <Header />

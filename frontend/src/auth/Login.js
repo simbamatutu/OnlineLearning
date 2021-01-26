@@ -12,7 +12,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import './auth.css';
-import Logo from '../resourses/logo (1).png';
+import Logo from '../img/fullLogo.png';
 
 const userIcon = <FontAwesomeIcon icon={faUser} className='icon' />;
 

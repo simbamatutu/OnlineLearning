@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 .Hero {
-  background-image: url('./resourses/hero.jpg');
+  background-image: url('./img/hero.jpg');
   background-size: cover;
   min-height: 50vh;
   background-repeat: no-repeat;
@@ -12,7 +12,7 @@
 }
 
 .courseHeader {
-  background-image: url('./resourses/Library.jpg');
+  background-image: url('./img/Library.jpg');
   background-size: cover;
   min-height: 30vh;
   background-repeat: no-repeat;

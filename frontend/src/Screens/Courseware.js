@@ -13,15 +13,13 @@ import {
   ListGroup,
   Row,
   Nav,
-  Tabs,
   Col,
   Image,
-  Button,
   Card,
 } from 'react-bootstrap';
 export default function Courseware({ match }) {
   const course = courses.find((c) => c._id === match.params.id);
-  console.log(course.name);
+
   return (
     <React.Fragment>
       <Header />

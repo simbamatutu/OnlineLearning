@@ -1,16 +1,5 @@
 import React from 'react';
-import {
-  Container,
-  Tab,
-  ListGroup,
-  Row,
-  Nav,
-  Tabs,
-  Col,
-  Image,
-  Button,
-  Card,
-} from 'react-bootstrap';
+import { Row, Col, Card } from 'react-bootstrap';
 export default function Announcements(props) {
   return (
     <Card>

@@ -1,17 +1,6 @@
 import React from 'react';
 
-import {
-  Container,
-  Tab,
-  ListGroup,
-  Row,
-  Nav,
-  Tabs,
-  Col,
-  Image,
-  Button,
-  Card,
-} from 'react-bootstrap';
+import { Tab, Tabs, Card } from 'react-bootstrap';
 export default function Lessons(props) {
   return (
     <Card className='m-3'>

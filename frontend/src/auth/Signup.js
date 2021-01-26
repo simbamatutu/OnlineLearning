@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import {
   Row,
@@ -17,7 +16,7 @@ import {
   faUserGraduate,
   faLock,
 } from '@fortawesome/free-solid-svg-icons';
-import Logo from '../resourses/logo (1).png';
+import Logo from '../img/fullLogo.png';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const userIcon = <FontAwesomeIcon icon={faUser} className='icon' />;

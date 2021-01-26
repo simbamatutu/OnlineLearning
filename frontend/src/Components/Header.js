@@ -11,8 +11,8 @@ import {
   FormControl,
   Button,
 } from 'react-bootstrap';
-import fullLogo from '../resourses/logo (1).png';
-import miniLogo from '../resourses/logo.png';
+import fullLogo from '../img/fullLogo.png';
+import miniLogo from '../img/miniLogo.png';
 
 const width =
   window.innerWidth ||
