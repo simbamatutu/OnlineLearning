@@ -1,5 +1,6 @@
-import React from 'react';
-import courses from '../Course';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import Announcements from '../Components/Announcements';
@@ -18,8 +19,16 @@ import {
   Card,
 } from 'react-bootstrap';
 export default function Courseware({ match }) {
-  const course = courses.find((c) => c._id === match.params.id);
+  console.log(match);
+  const [course, setCourse] = useState({});
 
+  useEffect(() => {
+    const fetchCourse = async () => {
+      const { data } = await axios.get(`/api/courses/${match.params.id}`);
+      setCourse(data);
+    };
+    fetchCourse();
+  }, [match]);
   return (
     <React.Fragment>
       <Header />
@@ -36,9 +45,8 @@ export default function Courseware({ match }) {
                     <ListGroup variant='flush'>
                       <ListGroup.Item>
                         <Image
-                          className='pt-1 pb-0 m-0 pl-0 pr-0'
                           width={200}
-                          height={140}
+                          height={160}
                           src={course.courseImage}
                           alt='courseImage'
                         />

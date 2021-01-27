@@ -18,6 +18,7 @@ import {
 import Courseoverview from '../Components/Courseoverview';
 
 export default function Coursescreen({ match }) {
+  console.log(match);
   const [course, setCourse] = useState({});
 
   useEffect(() => {
@@ -106,7 +107,7 @@ export default function Coursescreen({ match }) {
             </Col>
 
             <Col>
-              <Link to={`/course/${match.params._id}/${match.params.name}`}>
+              <Link to={`/course/${course.name}/${match.params.id}`}>
                 <Button
                   style={{ backgroundColor: '#005bac', border: 'none' }}
                   className='float-right my-3 mx-2'
@@ -155,7 +156,8 @@ export default function Coursescreen({ match }) {
             </Tab>
           </Tabs>
         </Card>
-        {/*<div>
+
+        <div>
           {course.category.map((cat) => (
             <Link
               to={`/Category/${cat}`}
@@ -181,7 +183,7 @@ export default function Coursescreen({ match }) {
               </small>
             </Link>
           ))}
-              </div> */}
+        </div>
       </Container>
       <Footer />
     </React.Fragment>

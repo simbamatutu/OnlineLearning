@@ -16,8 +16,8 @@ app.get('/api/courses/:id', (req, res) => {
   res.json(course);
 });
 
-app.get('/api/courses/:name', (req, res) => {
-  const course = courses.find((c) => c.name == req.params.name);
+app.get('/api/courses/:name/:id', (req, res) => {
+  const course = courses.find((c) => c._id == req.params.id);
   res.json(course);
 });
 
