@@ -18,7 +18,6 @@ import {
 import Courseoverview from '../Components/Courseoverview';
 
 export default function Coursescreen({ match }) {
-  console.log(match);
   const [course, setCourse] = useState({});
 
   useEffect(() => {
@@ -37,6 +36,7 @@ export default function Coursescreen({ match }) {
   const resourcesIcon = (
     <i class='fas fa-book-reader' style={{ color: '#005bac' }}></i>
   );*/
+  console.log(course);
   return (
     <React.Fragment>
       <Header />
@@ -158,7 +158,7 @@ export default function Coursescreen({ match }) {
         </Card>
 
         <div>
-          {course.category.map((cat) => (
+          {/* {course.category.map((cat) => (
             <Link
               to={`/Category/${cat}`}
               style={{
@@ -182,7 +182,7 @@ export default function Coursescreen({ match }) {
                 #{cat}
               </small>
             </Link>
-          ))}
+              ))} */}
         </div>
       </Container>
       <Footer />

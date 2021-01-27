@@ -1,4 +1,4 @@
-const course = [
+const Courses = [
   {
     _id: '1',
     name: 'Economics',
@@ -218,4 +218,4 @@ const course = [
   },
 ];
 
-module.exports = course;
+export default Courses;
