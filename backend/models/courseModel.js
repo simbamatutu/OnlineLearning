@@ -14,7 +14,6 @@ const courseSchema = mongoose.Schema(
     image: {
       type: String,
       required: true,
-      unique: true,
     },
     courseNum: {
       type: String,
@@ -23,7 +22,6 @@ const courseSchema = mongoose.Schema(
     level: {
       type: Number,
       default: 1,
-      required: true,
     },
   },
   {
@@ -31,5 +29,5 @@ const courseSchema = mongoose.Schema(
   }
 );
 
-const Course = mongoose.model('Course', userSchema);
+const Course = mongoose.model('Course', courseSchema);
 export default Course;
