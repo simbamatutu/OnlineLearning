@@ -5,9 +5,11 @@
   "main": "server.js",
   "type": "module",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
     "mongoose": "^5.11.13"
   },
   "devDependencies": {
@@ -19,7 +21,9 @@
     "start": "node backend/server",
     "server": "nodemon backend/server",
     "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "importdata": "node backend/seeder",
+    "deletedata": "node backend/seeder -d"
   },
   "repository": {
     "type": "git",

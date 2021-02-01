@@ -4,8 +4,6 @@ const Courses = [
     courseImage: '/resourses/Economics.png',
     user: 'Steve Rogers',
 
-    teacherIntro:
-      'Steve has sold more than 1,000,000 of his online business & self improvement courses in 12 languages in 196 countries and his courses have been profiled in Business Insider, NBC, Inc, Forbes, CNN, Entrepreneur & on other business news websites. Chris is the author of the #1 best selling online business course called "An Entire MBA in 1 Course®” & many other courses.',
     overview:
       'Microsoft Excel for Beginner and Intermediate Users: Become Proficient with the world’s #1 productivity software.Accounting, Financial Statements, and Financial Ratios: Making Sense of Debits and Credits, Profit and Loss statements, Balance Sheets, Liquidity, Solvency, Profitability, and Growth Financial Ratios Finance Basics: Interest Rates, Financial Math Calculations, Loan Calculations, Time Value of Money, Present and Future Value of Cash Flows Finance Basics: Interest Rates, Financial Math Calculations, Loan Calculations, Time Value of Money, Present and Future Value of Cash Flows Finance Basics: Interest Rates, Financial Math Calculations, Loan Calculations, Time Value of Money, Present and Future Value of Cash Flows',
     school: '3',
@@ -23,7 +21,6 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    _id: '2',
     name: 'Chemistry',
     courseImage: '/resourses/chemistry.png',
     teacher: 'Steve Rogers',
@@ -47,7 +44,6 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    _id: '3',
     name: 'Big Data',
     courseImage: '/resourses/bigdata.png',
     teacher: 'Steve Rogers',
@@ -71,7 +67,6 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    _id: '4',
     name: 'Cognative',
     courseImage: '/resourses/cognative.png',
     teacher: 'Steve Rogers',
@@ -95,7 +90,6 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    _id: '5',
     name: 'Elasticity',
     courseImage: '/resourses/elasticity.png',
     teacher: 'Steve Rogers',
@@ -119,7 +113,6 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    _id: '6',
     name: 'Electromagnetic',
     courseImage: '/resourses/electromag.png',
     teacher: 'Steve Rogers',
@@ -143,7 +136,6 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    _id: '7',
     name: 'Intro. To China',
     courseImage: '/resourses/introToChina.png',
     teacher: 'Steve Rogers',
@@ -167,7 +159,6 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    _id: '8',
     name: 'Physics',
 
     courseImage: '/resourses/physics.png',
@@ -192,7 +183,6 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    _id: '9',
     name: 'Python',
     courseImage: '/resourses/python.png',
     teacher: 'Steve Rogers',

@@ -43,6 +43,11 @@ const userSchema = mongoose.Schema(
       default: false,
       required: true,
     },
+    teacherNumber: {
+      type: String,
+      default: false,
+      required: true,
+    },
     isTeacher: {
       type: Boolean,
       default: false,

@@ -9,7 +9,6 @@ const courseSchema = mongoose.Schema(
     },
     courseName: {
       type: String,
-      required: true,
     },
 
     courseImage: {
@@ -41,13 +40,16 @@ const courseSchema = mongoose.Schema(
       type: Number,
     },
     exam: {
-      type: Boolean,
+      type: String,
     },
     language: {
       type: String,
     },
     assingments: {
-      type: Boolean,
+      type: String,
+    },
+    quiz: {
+      type: String,
     },
     courseNum: {
       type: String,
