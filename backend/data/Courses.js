@@ -1,10 +1,9 @@
 const Courses = [
   {
-    _id: '1',
-    name: 'Economics',
+    courseName: 'Economics',
     courseImage: '/resourses/Economics.png',
-    teacher: 'Steve Rogers',
-    teacherImg: '/resourses/dummyPerson.png',
+    user: 'Steve Rogers',
+
     teacherIntro:
       'Steve has sold more than 1,000,000 of his online business & self improvement courses in 12 languages in 196 countries and his courses have been profiled in Business Insider, NBC, Inc, Forbes, CNN, Entrepreneur & on other business news websites. Chris is the author of the #1 best selling online business course called "An Entire MBA in 1 Course®” & many other courses.',
     overview:

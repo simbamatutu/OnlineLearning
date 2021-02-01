@@ -7,13 +7,47 @@ const courseSchema = mongoose.Schema(
       required: true,
       ref: 'User',
     },
-    name: {
+    courseName: {
       type: String,
       required: true,
     },
-    image: {
+
+    courseImage: {
+      type: String,
+    },
+    overview: {
       type: String,
       required: true,
+    },
+    school: {
+      type: Number,
+    },
+    maxCapacity: {
+      type: Number,
+    },
+    enrolled: {
+      type: Number,
+    },
+    category: {
+      type: Array,
+    },
+    lectures: {
+      type: Number,
+    },
+    startingWeek: {
+      type: Number,
+    },
+    endingWeek: {
+      type: Number,
+    },
+    exam: {
+      type: Boolean,
+    },
+    language: {
+      type: String,
+    },
+    assingments: {
+      type: Boolean,
     },
     courseNum: {
       type: String,
