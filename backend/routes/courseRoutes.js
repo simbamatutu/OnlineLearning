@@ -20,11 +20,12 @@ router.get(
 router.get(
   '/:id',
   asyncHandler(async (req, res) => {
-    const course = Course.findById(req.params.id);
+    const course = await Course.findById(req.params.id);
     if (course) {
       res.json(course);
     } else {
-      res.status(404).json({ msg: 'get away' });
+      res.status(404);
+      throw new Error('Coures  not found');
     }
   })
 );
@@ -33,13 +34,14 @@ router.get(
 // @route GET /api/courses/:name/:id
 // @access public
 router.get(
-  '/:name/:id',
+  '/courseware/:id',
   asyncHandler(async (req, res) => {
     const course = await Course.findById(req.params.id);
     if (course) {
       res.json(course);
     } else {
-      res.status(404).json({ msg: 'get away' });
+      res.status(404);
+      throw new Error('Couresware not found');
     }
   })
 );

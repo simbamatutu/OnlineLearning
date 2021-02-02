@@ -10,7 +10,7 @@ function Coursecard(props) {
         boxShadow: '0 5px 7px -5px black',
       }}
     >
-      <Link to={`/course/${props.course._id}`}>
+      <Link to={`/courses/${props.course._id}`}>
         <Card.Img
           variant='top'
           src={props.course.courseImage}
@@ -21,7 +21,7 @@ function Coursecard(props) {
       <Card.Body className='p-0'>
         <Card.Title as='span' className='d-flex justify-content-between'>
           <Link
-            to={`/course/${props.course._id}`}
+            to={`/courses/${props.course._id}`}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
             <strong>{props.course.name}</strong>{' '}
@@ -65,7 +65,7 @@ function Coursecard(props) {
         className='text-center mt-2'
         style={{ backgroundColor: 'white' }}
       >
-        <Link to={`/course/${props.course._id}`}>
+        <Link to={`/courses${props.course._id}`}>
           <Button
             style={{ backgroundColor: '#005bac', border: 'none' }}
             disabled={props.course.maxCapacity <= props.course.enrolled}

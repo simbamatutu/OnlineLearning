@@ -12,8 +12,8 @@ function App() {
         <Route path='/' component={Homescreen} exact />
         <Route path='/Signup' component={Signup} />
         <Route path='/Login' component={Login} />
-        <Route path='/course/:id' exact component={Coursescreen} />
-        <Route path='/course/:name/:id' component={Courseware} />
+        <Route path='/courses/:id' exact component={Coursescreen} />
+        <Route path='/courses/courseware/:id' component={Courseware} />
       </main>
     </Router>
   );

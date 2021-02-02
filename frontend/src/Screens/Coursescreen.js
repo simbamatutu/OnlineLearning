@@ -107,7 +107,7 @@ export default function Coursescreen({ match }) {
             </Col>
 
             <Col>
-              <Link to={`/course/${course.name}/${match.params.id}`}>
+              <Link to={`/courses/courseware/${match.params.id}`}>
                 <Button
                   style={{ backgroundColor: '#005bac', border: 'none' }}
                   className='float-right my-3 mx-2'

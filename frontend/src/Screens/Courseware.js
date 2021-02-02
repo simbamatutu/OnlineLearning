@@ -24,7 +24,9 @@ export default function Courseware({ match }) {
 
   useEffect(() => {
     const fetchCourse = async () => {
-      const { data } = await axios.get(`/api/courses/${match.params.id}`);
+      const { data } = await axios.get(
+        `/api/courses/courseware/${match.params.id}`
+      );
       setCourse(data);
     };
     fetchCourse();
