@@ -2,8 +2,6 @@ const Courses = [
   {
     courseName: 'Economics',
     courseImage: '/resourses/Economics.png',
-    user: 'Steve Rogers',
-
     overview:
       'Microsoft Excel for Beginner and Intermediate Users: Become Proficient with the world’s #1 productivity software.Accounting, Financial Statements, and Financial Ratios: Making Sense of Debits and Credits, Profit and Loss statements, Balance Sheets, Liquidity, Solvency, Profitability, and Growth Financial Ratios Finance Basics: Interest Rates, Financial Math Calculations, Loan Calculations, Time Value of Money, Present and Future Value of Cash Flows Finance Basics: Interest Rates, Financial Math Calculations, Loan Calculations, Time Value of Money, Present and Future Value of Cash Flows Finance Basics: Interest Rates, Financial Math Calculations, Loan Calculations, Time Value of Money, Present and Future Value of Cash Flows',
     school: '3',
@@ -69,7 +67,7 @@ const Courses = [
   {
     name: 'Cognative',
     courseImage: '/resourses/cognative.png',
-    teacher: 'Steve Rogers',
+    courseTeacher: 'Steve Rogers',
     teacherImg: '/resourses/dummyPerson.png',
     teacherIntro:
       'Steve has sold more than 1,000,000 of his online business & self improvement courses in 12 languages in 196 countries and his courses have been profiled in Business Insider, NBC, Inc, Forbes, CNN, Entrepreneur & on other business news websites. Chris is the author of the #1 best selling online business course called "An Entire MBA in 1 Course®” & many other courses.',

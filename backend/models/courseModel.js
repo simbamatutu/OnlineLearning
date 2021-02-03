@@ -14,6 +14,11 @@ const courseSchema = mongoose.Schema(
     courseImage: {
       type: String,
     },
+
+    courseTeachers: {
+      type: Array,
+    },
+
     overview: {
       type: String,
       required: true,
