@@ -16,14 +16,21 @@ import {
 
 export default function Homescreen() {
   const [courses, setCourses] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const fetchCourses = async () => {
       const { data } = await axios.get('/api/courses');
       setCourses(data);
     };
+    const fetchUsers = async () => {
+      const { Userdata } = await axios.get('/api/courses');
+      setUsers(Userdata);
+    };
     fetchCourses();
+    fetchUsers();
   }, []);
+  console.log(users);
   return (
     <React.Fragment>
       <Header />
