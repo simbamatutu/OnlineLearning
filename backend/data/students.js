@@ -1,33 +1,35 @@
 import bcryptjs from 'bcryptjs';
-const users = [
+const students = [
   {
     name: 'Steve Rogers',
     loginName: 'rogers',
-    profilePic: '',
+    profilePic: '/resourses/dummyPerson.png',
     password: bcryptjs.hashSync('123456', 10),
     email: 'stave@mail.com',
-    isTeacher: 'true',
-    isAdmin: 'true',
-    teacherNumber: 'LB7737373',
+    about: 'it is i',
+    enrolledCourses: [],
+    studentNumber: '7737373',
   },
   {
     name: 'Natasha Romanoof',
     loginName: 'natty',
-    profilePic: '',
+    profilePic: '/resourses/dummyPerson.png',
     email: 'natty@mail.com',
     password: bcryptjs.hashSync('123456', 10),
-    isStudent: 'true',
-    studentNumber: '7737373',
+    about: 'it is i',
+    enrolledCourses: [],
+    studentNumber: '7767373',
   },
   {
     name: 'Tony Stark',
     loginName: 'tony',
     email: 'tony@mail.com',
-    profilePic: '',
+    profilePic: '/resourses/dummyPerson.png',
     password: bcryptjs.hashSync('123456', 10),
-    isStudent: 'true',
-    studentNumber: 'LB7737373',
+    about: 'it is i',
+    enrolledCourses: [],
+    studentNumber: '7637373',
   },
 ];
 
-export default users;
+export default students;

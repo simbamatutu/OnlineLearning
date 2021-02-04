@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const userSchema = mongoose.Schema(
+const teacherSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -13,6 +13,7 @@ const userSchema = mongoose.Schema(
     profilePic: {
       type: String,
     },
+
     about: {
       type: String,
     },
@@ -28,31 +29,16 @@ const userSchema = mongoose.Schema(
     gender: {
       type: Boolean,
     },
-    isStudent: {
-      type: Boolean,
-      default: false,
-      required: true,
+    coursesTaught: {
+      type: Array,
     },
-    isTeacher: {
-      type: Boolean,
-      default: false,
-      required: true,
-    },
-    studentNumber: {
-      type: String,
-      default: false,
-      required: true,
-    },
+
     teacherNumber: {
       type: String,
       default: false,
       required: true,
     },
-    isTeacher: {
-      type: Boolean,
-      default: false,
-      required: true,
-    },
+
     isAdmin: {
       type: Boolean,
       default: false,
@@ -64,5 +50,5 @@ const userSchema = mongoose.Schema(
   }
 );
 
-const User = mongoose.model('User', userSchema);
-export default User;
+const User = mongoose.model('Student', studentSchema);
+export default Student;

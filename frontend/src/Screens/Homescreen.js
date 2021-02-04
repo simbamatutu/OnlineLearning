@@ -24,13 +24,13 @@ export default function Homescreen() {
       setCourses(data);
     };
     const fetchUsers = async () => {
-      const { Userdata } = await axios.get('/api/courses');
+      const { Userdata } = await axios.get('/api/users');
       setUsers(Userdata);
     };
     fetchCourses();
     fetchUsers();
   }, []);
-  console.log(users);
+
   return (
     <React.Fragment>
       <Header />

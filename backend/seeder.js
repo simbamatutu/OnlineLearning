@@ -1,10 +1,12 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import colors from 'colors';
-import users from './data/users.js';
 import courses from './data/courses.js';
-import User from './models/userModel.js';
 import Course from './models/courseModel.js';
+import students from './data/students.js';
+import teachers from './data/teachers.js';
+import Student from './models/studentModel.js';
+import Teacher from './models/teacherModel.js';
 import connectDB from './config/db.js';
 
 dotenv.config();
