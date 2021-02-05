@@ -16,21 +16,16 @@ import {
 
 export default function Homescreen() {
   const [courses, setCourses] = useState([]);
-  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const fetchCourses = async () => {
       const { data } = await axios.get('/api/courses');
       setCourses(data);
     };
-    const fetchUsers = async () => {
-      const { Userdata } = await axios.get('/api/courses');
-      setUsers(Userdata);
-    };
+
     fetchCourses();
-    fetchUsers();
   }, []);
-  console.log(users);
+
   return (
     <React.Fragment>
       <Header />
@@ -85,7 +80,7 @@ export default function Homescreen() {
                 >
                   <Card.Body className='text-center pt-2 pl-0 pr-0'>
                     <i
-                      class='fas fa-file-code'
+                      className='fas fa-file-code'
                       style={{ fontSize: '1.9ch', color: '#005bac' }}
                     ></i>
                     <br />
@@ -111,7 +106,7 @@ export default function Homescreen() {
                 >
                   <Card.Body className='text-center pt-2 pl-0 pr-0'>
                     <i
-                      class='fas fa-plane'
+                      className='fas fa-plane'
                       style={{ fontSize: '1.9ch', color: '#005bac' }}
                     ></i>
                     <br />
@@ -137,7 +132,7 @@ export default function Homescreen() {
                 >
                   <Card.Body className='text-center pt-2 pl-0 pr-0'>
                     <i
-                      class='fas fa-space-shuttle'
+                      className='fas fa-space-shuttle'
                       style={{ fontSize: '1.9ch', color: '#005bac' }}
                     ></i>
                     <br />
@@ -164,7 +159,7 @@ export default function Homescreen() {
                 >
                   <Card.Body className='text-center pt-2 pl-0 pr-0'>
                     <i
-                      class='fas fa-briefcase'
+                      className='fas fa-briefcase'
                       style={{ fontSize: '1.9ch', color: '#005bac' }}
                     ></i>
                     <br />
@@ -190,7 +185,7 @@ export default function Homescreen() {
                 >
                   <Card.Body className='text-center pt-2 pl-0 pr-0'>
                     <i
-                      class='fas fa-hammer'
+                      className='fas fa-hammer'
                       style={{ fontSize: '1.9ch', color: '#005bac' }}
                     ></i>
                     <br />
@@ -216,7 +211,7 @@ export default function Homescreen() {
                 >
                   <Card.Body className='text-center pt-2 pl-0 pr-0'>
                     <i
-                      class='fas fa-calculator'
+                      className='fas fa-calculator'
                       style={{ fontSize: '1.9ch', color: '#005bac' }}
                     ></i>
                     <br />
@@ -243,7 +238,7 @@ export default function Homescreen() {
                 >
                   <Card.Body className='text-center pt-2 pl-0 pr-0'>
                     <i
-                      class='fas fa-drafting-compass'
+                      className='fas fa-drafting-compass'
                       style={{ fontSize: '1.9ch', color: '#005bac' }}
                     ></i>
                     <br />
@@ -269,7 +264,7 @@ export default function Homescreen() {
                 >
                   <Card.Body className='text-center pt-2 pl-0 pr-0'>
                     <i
-                      class='fas fa-language'
+                      className='fas fa-language'
                       style={{ fontSize: '1.9ch', color: '#005bac' }}
                     ></i>
                     <br />
@@ -295,7 +290,7 @@ export default function Homescreen() {
                 >
                   <Card.Body className='text-center pt-2 pl-0 pr-0'>
                     <i
-                      class='fas fa-hand-holding-water'
+                      className='fas fa-hand-holding-water'
                       style={{ fontSize: '1.9ch', color: '#005bac' }}
                     ></i>
                     <br />
@@ -368,7 +363,7 @@ export default function Homescreen() {
         <CardGroup style={{ margin: '3rem' }}>
           <Row>
             {courses.map((course) => (
-              <Col sm={12} md={6} lg={4} xl={3}>
+              <Col sm={12} md={6} lg={4} xl={3} key={course._id}>
                 <Coursecard course={course} />
               </Col>
             ))}

@@ -36,7 +36,7 @@ export default function Coursescreen({ match }) {
   const resourcesIcon = (
     <i class='fas fa-book-reader' style={{ color: '#005bac' }}></i>
   );*/
-  console.log(course);
+
   return (
     <React.Fragment>
       <Header />

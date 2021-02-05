@@ -30,8 +30,9 @@ function Coursecard(props) {
         </Card.Title>
 
         <Card.Text as='span'>
-          {props.course.category.map((cat) => (
+          {props.course.category.map((cat, index) => (
             <Link
+              key={index}
               to={`/Category/${cat}`}
               style={{ textDecoration: 'none', color: 'white' }}
             >
@@ -57,7 +58,7 @@ function Coursecard(props) {
           className='mt-1'
           style={{ color: '#bebebe', fontSize: '1ch' }}
         >
-          <i class='fas fa-user-graduate'></i>
+          <i className='fas fa-user-graduate'></i>
           <span className='pl-2'>{props.course.enrolled}</span>
         </Card.Text>
       </Card.Body>
