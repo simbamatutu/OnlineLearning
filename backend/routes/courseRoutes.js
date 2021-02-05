@@ -2,6 +2,7 @@ import express from 'express';
 import asyncHandler from 'express-async-handler';
 const router = express.Router();
 import Course from '../models/courseModel.js';
+import Teacher from '../models/teacherModel.js';
 
 // @desc Fetch app all Courses
 // @route GET /api/courses
@@ -10,10 +11,30 @@ router.get(
   '/',
   asyncHandler(async (req, res) => {
     const courses = await Course.find({});
+
     res.json(courses);
   })
 );
 
+router.get(
+  '/teachers',
+  asyncHandler(async (req, res) => {
+    const teachers = await Teacher.find({});
+
+    res.json(teachers);
+  })
+);
+
+// @desc Fetch app all Courses
+// @route GET /api/teacher
+// @access public
+// router.get(
+//   '/teachers',
+//   asyncHandler(async (req, res) => {
+//     const teachers = await Teacher.find({});
+//     res.json(teachers);
+//   })
+// );
 // @desc Fetch app course
 // @route GET /api/courses:id
 // @access public

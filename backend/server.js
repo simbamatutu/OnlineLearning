@@ -4,6 +4,7 @@ import colors from 'colors';
 import connectDB from './config/db.js';
 
 import courseRoutes from './routes/courseRoutes.js';
+//import teacherRoutes from './routes/teacherRoutes.js';
 dotenv.config();
 connectDB();
 const app = express();
@@ -12,6 +13,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/courses', courseRoutes);
+//app.use('/api/courses', teacherRoutes);
 
 //Error handler
 app.use((req, res, next) => {

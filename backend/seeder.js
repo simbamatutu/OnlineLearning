@@ -1,10 +1,12 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import colors from 'colors';
-import users from './data/users.js';
 import courses from './data/courses.js';
-import User from './models/userModel.js';
 import Course from './models/courseModel.js';
+import students from './data/students.js';
+import teachers from './data/teachers.js';
+import Student from './models/studentModel.js';
+import Teacher from './models/teacherModel.js';
 import connectDB from './config/db.js';
 
 dotenv.config();
@@ -12,11 +14,13 @@ connectDB();
 
 const importData = async () => {
   try {
-    await User.deleteMany();
+    await Teacher.deleteMany();
+    await Student.deleteMany();
     await Course.deleteMany();
 
-    const createdUsers = await User.insertMany(users);
-    const adminUser = createdUsers[0]._id;
+    const createdTeachers = await Teacher.insertMany(teachers);
+    const createdStudents = await Student.insertMany(students);
+    const adminUser = createdTeachers[0]._id;
 
     const sampleCourse = courses.map((course) => {
       return { ...course, user: adminUser };
@@ -33,7 +37,8 @@ const importData = async () => {
 
 const destoryData = async () => {
   try {
-    await User.deleteMany();
+    await Teacher.deleteMany();
+    await Student.deleteMany();
     await Course.deleteMany();
 
     console.log('Data Destory successful'.red.inverse);
