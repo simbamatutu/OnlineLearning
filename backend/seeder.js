@@ -14,11 +14,13 @@ connectDB();
 
 const importData = async () => {
   try {
-    await User.deleteMany();
+    await Teacher.deleteMany();
+    await Student.deleteMany();
     await Course.deleteMany();
 
-    const createdUsers = await User.insertMany(users);
-    const adminUser = createdUsers[0]._id;
+    const createdTeachers = await Teacher.insertMany(teachers);
+    const createdStudents = await Student.insertMany(students);
+    const adminUser = createdTeachers[0]._id;
 
     const sampleCourse = courses.map((course) => {
       return { ...course, user: adminUser };
@@ -35,7 +37,8 @@ const importData = async () => {
 
 const destoryData = async () => {
   try {
-    await User.deleteMany();
+    await Teacher.deleteMany();
+    await Student.deleteMany();
     await Course.deleteMany();
 
     console.log('Data Destory successful'.red.inverse);

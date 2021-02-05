@@ -25,8 +25,10 @@ export default function Coursescreen({ match }) {
       const { data } = await axios.get(`/api/courses/${match.params.id}`);
       setCourse(data);
     };
+
     fetchCourse();
   }, [match]);
+
   /*{const overviewIcon = (
     <i class='fas fa-bookmark' style={{ color: '#005bac' }}></i>
   );
@@ -36,7 +38,7 @@ export default function Coursescreen({ match }) {
   const resourcesIcon = (
     <i class='fas fa-book-reader' style={{ color: '#005bac' }}></i>
   );*/
-  console.log(course);
+
   return (
     <React.Fragment>
       <Header />
@@ -73,7 +75,7 @@ export default function Coursescreen({ match }) {
                   <small>Teacher</small>
                 </Row>
                 <Row>
-                  <small>{course.teacher}</small>
+                  <small>name</small>
                 </Row>
               </div>
             </Col>

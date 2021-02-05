@@ -43,5 +43,5 @@ const studentSchema = mongoose.Schema(
   }
 );
 
-const User = mongoose.model('Student', studentSchema);
+const Student = mongoose.model('Student', studentSchema);
 export default Student;
