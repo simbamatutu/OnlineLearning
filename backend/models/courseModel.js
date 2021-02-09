@@ -2,11 +2,11 @@ import mongoose from 'mongoose';
 
 const courseSchema = mongoose.Schema(
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: 'Teacher',
-    },
+    // courseCreatedBy: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   required: true,
+    //   ref: 'Teacher',
+    // },
     courseName: {
       type: String,
     },

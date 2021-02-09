@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import Course from './courseModel.js';
 
 const studentSchema = mongoose.Schema(
   {
@@ -35,7 +36,7 @@ const studentSchema = mongoose.Schema(
       required: true,
     },
     enrolledCourses: {
-      type: Array,
+      type: [Course.schema],
     },
   },
   {

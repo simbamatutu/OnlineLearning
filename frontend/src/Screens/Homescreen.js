@@ -351,7 +351,7 @@ export default function Homescreen() {
           className='row d-flex justify-content-center'
         >
           <Nav.Item>
-            <Nav.Link href='/home'>Trending</Nav.Link>
+            <Nav.Link href=''>Trending</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link eventKey='link-1'>Most Popular</Nav.Link>

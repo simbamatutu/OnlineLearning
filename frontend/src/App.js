@@ -5,6 +5,7 @@ import Login from './auth/Login';
 import Homescreen from './Screens/Homescreen';
 import Coursescreen from './Screens/Coursescreen';
 import Courseware from './Screens/Courseware';
+import teacherHomescreen from './Screens/teacherHomescreen';
 function App() {
   return (
     <Router>
@@ -14,6 +15,7 @@ function App() {
         <Route path='/Login' component={Login} />
         <Route path='/courses/:id' exact component={Coursescreen} />
         <Route path='/courses/courseware/:id' component={Courseware} />
+        <Route path='/teacherHome' component={teacherHomescreen} />
       </main>
     </Router>
   );
