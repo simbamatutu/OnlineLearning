@@ -1,10 +1,11 @@
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Signup from './auth/Signup';
-import Login from './auth/Login';
+import Signup from './Components/Register';
+import Login from './Components/Login';
 import Homescreen from './Screens/Homescreen';
 import Coursescreen from './Screens/Coursescreen';
 import Courseware from './Screens/Courseware';
+import Profilescreen from './Screens/Profilescreen';
 import teacherHomescreen from './Screens/teacherHomescreen';
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/courses/:id' exact component={Coursescreen} />
         <Route path='/courses/courseware/:id' component={Courseware} />
         <Route path='/teacherHome' component={teacherHomescreen} />
+        <Route path='/profile' component={Profilescreen} />
       </main>
     </Router>
   );

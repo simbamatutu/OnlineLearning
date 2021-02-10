@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import { getCourseById, getCourses } from '../controllers/courseControllers.js';
-import Teacher from '../models/teacherModel.js';
+import Teacher from '../models/userModel.js';
 
 router.route('/').get(getCourses);
 

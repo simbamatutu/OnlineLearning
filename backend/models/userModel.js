@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import bcryptjs from 'bcryptjs';
 import Course from './courseModel.js';
-const teacherSchema = mongoose.Schema(
+const userSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -33,11 +33,14 @@ const teacherSchema = mongoose.Schema(
     coursesTaught: {
       type: [Course.schema],
     },
-
+    studentNumber: {
+      type: String,
+    },
+    enrolledCourses: {
+      type: [Course.schema],
+    },
     teacherNumber: {
       type: String,
-      default: false,
-      required: true,
     },
 
     isAdmin: {
@@ -61,11 +64,11 @@ const teacherSchema = mongoose.Schema(
   }
 );
 
-teacherSchema.methods.matchPassword = async function (enteredPassword) {
+userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcryptjs.compare(enteredPassword, this.password);
 };
 
-teacherSchema.pre('save', async function (next) {
+userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     next();
   }
@@ -73,5 +76,5 @@ teacherSchema.pre('save', async function (next) {
   this.password = await bcryptjs.hash(this.password, salt);
 });
 
-const Teacher = mongoose.model('Teacher', teacherSchema);
-export default Teacher;
+const User = mongoose.model('User', userSchema);
+export default User;

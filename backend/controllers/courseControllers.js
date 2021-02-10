@@ -2,7 +2,6 @@ import express from 'express';
 import asyncHandler from 'express-async-handler';
 const router = express.Router();
 import Course from '../models/courseModel.js';
-import Teacher from '../models/teacherModel.js';
 
 // @desc Fetch app all Courses
 // @route GET /api/courses
