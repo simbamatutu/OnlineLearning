@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import {
