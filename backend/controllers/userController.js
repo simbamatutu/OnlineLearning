@@ -32,7 +32,16 @@ const authUser = asyncHandler(async (req, res) => {
 // @route POST /api/user
 // @access public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, loginName, password } = req.body;
+  const {
+    name,
+    email,
+    loginName,
+    password,
+    isStudent,
+    isTeacher,
+    studentNumber,
+    teacherNumber,
+  } = req.body;
   const userExists = await User.findOne({ loginName });
 
   if (userExists) {
@@ -45,6 +54,10 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     loginName,
     password,
+    isStudent,
+    isTeacher,
+    studentNumber,
+    teacherNumber,
   });
 
   if (user) {
@@ -54,6 +67,8 @@ const registerUser = asyncHandler(async (req, res) => {
       loginName: user.loginName,
       isTeacher: user.isTeacher,
       isStudent: user.isStudent,
+      studentNumber: user.studentNumber,
+      teacherNumber: user.teacherNumber,
       token: generateTokenfrom(user._id),
     });
   } else {
@@ -74,6 +89,8 @@ const getUserProfile = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       loginName: user.loginName,
+      studentNumber: user.studentNumber,
+      teacherNumber: user.teacherNumber,
       isTeacher: user.isTeacher,
       isStudent: user.isStudent,
     });
@@ -93,6 +110,8 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
     user.loginName = req.body.loginName || user.loginName;
+    user.studentNumber = req.body.studentNumber || user.studentNumber;
+    user.teacherNumber = req.body.teacherNumber || user.teacherNumber;
 
     if (req.body.password) {
       user.password = req.body.password;

@@ -7,7 +7,11 @@ import Message from '../Components/Message';
 import Loader from '../Components/Loader';
 export const Register = ({ location, history }) => {
   const [loginName, setLoginName] = useState('');
+  const [studentNumber, setStudentNumber] = useState('');
+  const [teacherNumber, setTeacherNumber] = useState('');
   const [name, setName] = useState('');
+  const [isTeacher, setIsTeacher] = useState(false);
+  const [isStudent, setIsStudent] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfrimPassword] = useState('');
@@ -30,9 +34,21 @@ export const Register = ({ location, history }) => {
     if (password !== confirmPassword) {
       setMessage('Passwords do not match!');
     } else {
-      dispatch(register(email, name, loginName, password));
+      dispatch(
+        register(
+          email,
+          name,
+          loginName,
+          password,
+          isStudent,
+          isTeacher,
+          studentNumber,
+          teacherNumber
+        )
+      );
     }
   };
+
   return (
     <Row className='justify-content-md-center'>
       <Col xs={12} md={6} xl={3}>
@@ -71,6 +87,46 @@ export const Register = ({ location, history }) => {
               onChange={(e) => setEmail(e.target.value)}
             ></Form.Control>
           </Form.Group>
+          <Form.Group controlId='checkboxControls'>
+            <Form.Check
+              inline
+              label='Student'
+              type='switch'
+              id='studentCheckbox'
+              onChange={(e) => setIsStudent(e.target.checked)}
+            />
+
+            <Form.Check
+              inline
+              label='Teacher'
+              type='switch'
+              id='teacherCheckbox'
+              value={isStudent}
+              onChange={(e) => setIsTeacher(e.target.checked)}
+            />
+          </Form.Group>
+
+          {isTeacher ? (
+            <Form.Group controlId='teacherNumber'>
+              <Form.Label>Teacher Number</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter Teacher Number'
+                value={teacherNumber}
+                onChange={(e) => setTeacherNumber(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+          ) : (
+            <Form.Group controlId='studentNumber'>
+              <Form.Label>Student Number</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter Student Number'
+                value={studentNumber}
+                onChange={(e) => setStudentNumber(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+          )}
 
           <Form.Group controlId='password'>
             <Form.Label>Password</Form.Label>

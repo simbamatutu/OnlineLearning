@@ -15,6 +15,9 @@ import {
   USER_UPDATE_PROFILE_FAIL,
 } from '../constants/userContants';
 
+// @desc Auth users and get token
+// @route POST /api/tea chers/login
+// @access public
 export const login = (loginName, password) => async (dispatch) => {
   try {
     dispatch({
@@ -47,9 +50,19 @@ export const login = (loginName, password) => async (dispatch) => {
   }
 };
 
-export const register = (email, name, loginName, password) => async (
-  dispatch
-) => {
+// @desc Regster new user
+// @route POST /api/user
+// @access public
+export const register = (
+  email,
+  name,
+  loginName,
+  password,
+  isStudent,
+  isTeacher,
+  studentNumber,
+  teacherNumber
+) => async (dispatch) => {
   try {
     dispatch({
       type: USER_REGISTER_REQUEST,
@@ -61,7 +74,16 @@ export const register = (email, name, loginName, password) => async (
     };
     const { data } = await axios.post(
       '/api/users',
-      { name, email, loginName, password },
+      {
+        name,
+        email,
+        loginName,
+        password,
+        isStudent,
+        isTeacher,
+        studentNumber,
+        teacherNumber,
+      },
       config
     );
 
@@ -85,6 +107,9 @@ export const register = (email, name, loginName, password) => async (
   }
 };
 
+// @desc get logged in profile
+// @route GET /api/users/profile
+// @access private
 export const getUserDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch({
@@ -116,6 +141,9 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
   }
 };
 
+// @desc update user Profile
+// @route PUT /api/users/profile
+// @access private
 export const updateUserProfile = (user) => async (dispatch, getState) => {
   try {
     dispatch({
@@ -147,6 +175,9 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     });
   }
 };
+
+// @desc logout  user
+// @route PUT /api/users
 const logout = () => (dispatch) => {
   localStorage.removeItem('userInfo');
   dispatch({ type: USER_LOGOUT });
