@@ -6,7 +6,9 @@ import Homescreen from './Screens/Homescreen';
 import Coursescreen from './Screens/Coursescreen';
 import Courseware from './Screens/Courseware';
 import Profilescreen from './Screens/Profilescreen';
+import UserListScreen from './Screens/UserListScreen';
 import teacherHomescreen from './Screens/teacherHomescreen';
+import { EditUserScreen } from './Screens/EditUserScreen';
 function App() {
   return (
     <Router>
@@ -18,6 +20,8 @@ function App() {
         <Route path='/courses/courseware/:id' component={Courseware} />
         <Route path='/teacherHome' component={teacherHomescreen} />
         <Route path='/profile' component={Profilescreen} />
+        <Route path='/admin/user/:id/edit' component={EditUserScreen} />
+        <Route path='/admin/user-list' component={UserListScreen} />
       </main>
     </Router>
   );
