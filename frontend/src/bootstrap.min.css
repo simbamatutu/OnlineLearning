@@ -75,7 +75,7 @@ body {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #55595c;
+
   text-align: left;
   background-color: #fff;
 }
@@ -163,7 +163,7 @@ a {
   background-color: transparent;
 }
 a:hover {
-  color: #000;
+  color: #005bac;
   text-decoration: underline;
 }
 a:not([href]):not([class]) {
@@ -1912,9 +1912,7 @@ pre code {
   width: 100%;
   height: calc(1.5em + 1.5rem);
   padding: 0.75rem 1.5rem;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.5;
+
   color: #55595c;
   background-color: #f7f7f9;
   background-clip: padding-box;
@@ -1938,9 +1936,9 @@ pre code {
 .form-control:focus {
   color: #55595c;
   background-color: #f7f7f9;
-  border-color: #5a5a5a;
+  border-color: #005bac;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(26, 26, 26, 0.25);
+  box-shadow: 0 0 0 0.2rem #005bac;
 }
 .form-control::-webkit-input-placeholder {
   color: #919aa1;
@@ -2442,13 +2440,13 @@ fieldset:disabled a.btn {
 .btn-primary:hover {
   color: #fff;
   background-color: #070707;
-  border-color: #010101;
+  border-color: #005bac;
 }
 .btn-primary.focus,
 .btn-primary:focus {
   color: #fff;
   background-color: #070707;
-  border-color: #010101;
+  border-color: #005bac;
   box-shadow: 0 0 0 0.2rem rgba(60, 60, 60, 0.5);
 }
 .btn-primary.disabled,
@@ -2462,7 +2460,7 @@ fieldset:disabled a.btn {
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
   background-color: #010101;
-  border-color: #000;
+  border-color: #005bac;
 }
 .btn-primary:not(:disabled):not(.disabled).active:focus,
 .btn-primary:not(:disabled):not(.disabled):active:focus,
@@ -2470,7 +2468,7 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(60, 60, 60, 0.5);
 }
 .btn-secondary {
-  color: #1a1a1a;
+  color: #005bac;
   background-color: #fff;
   border-color: #fff;
 }
@@ -2715,7 +2713,7 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(82, 88, 93, 0.5);
 }
 .btn-outline-primary {
-  color: #1a1a1a;
+  color: #005bac;
   border-color: #1a1a1a;
 }
 .btn-outline-primary:hover {
@@ -2960,7 +2958,7 @@ fieldset:disabled a.btn {
   text-decoration: none;
 }
 .btn-link:hover {
-  color: #000;
+  color: #005bac;
   text-decoration: underline;
 }
 .btn-link.focus,
@@ -4304,7 +4302,7 @@ input[type='submit'].btn-block {
   color: #1a1a1a;
 }
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.3);
+  color: #005bac;
 }
 .navbar-light .navbar-nav .nav-link:focus,
 .navbar-light .navbar-nav .nav-link:hover {
@@ -9108,21 +9106,21 @@ button.bg-dark:hover {
   font-style: italic !important;
 }
 .text-white {
-  color: #fff !important;
+  color: #fff;
 }
 .text-primary {
-  color: #1a1a1a !important;
+  color: #1a1a1a;
 }
 a.text-primary:focus,
 a.text-primary:hover {
-  color: #000 !important;
+  color: #000;
 }
 .text-secondary {
-  color: #fff !important;
+  color: #fff;
 }
 a.text-secondary:focus,
 a.text-secondary:hover {
-  color: #d9d9d9 !important;
+  color: #d9d9d9;
 }
 .text-success {
   color: #4bbf73 !important;
@@ -9252,7 +9250,7 @@ a.text-dark:hover {
     display: none;
   }
   .badge {
-    border: 1px solid #000;
+    border: 1px solid #005bac;
   }
   .table {
     border-collapse: collapse !important;
@@ -9342,7 +9340,6 @@ a.text-dark:hover {
 }
 body {
   font-weight: 200;
-  letter-spacing: 1px;
 }
 h1,
 h2,
@@ -9351,7 +9348,6 @@ h4,
 h5,
 h6 {
   text-transform: uppercase;
-  letter-spacing: 3px;
 }
 .text-secondary {
   color: #55595c !important;

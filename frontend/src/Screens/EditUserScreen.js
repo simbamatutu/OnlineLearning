@@ -136,7 +136,6 @@ export const EditUserScreen = ({ match, history }) => {
                   ></Form.Control>
                 </Form.Group>
               )}
-
               <Form.Group controlId='checkboxControls'>
                 <Form.Check
                   inline

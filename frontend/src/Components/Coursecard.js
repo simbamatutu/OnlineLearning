@@ -66,7 +66,7 @@ function Coursecard(props) {
         className='text-center mt-2'
         style={{ backgroundColor: 'white' }}
       >
-        <Link to={`/courses${props.course._id}`}>
+        <Link to={`/courses/${props.course._id}`}>
           <Button
             style={{ backgroundColor: '#005bac', border: 'none' }}
             disabled={props.course.maxCapacity <= props.course.enrolled}

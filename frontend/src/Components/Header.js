@@ -30,9 +30,10 @@ const Header = () => {
   };
   return (
     <Navbar
+      className='mr-4'
       collapseOnSelect
       expand='lg'
-      style={{ boxShadow: '0 4px 4px -6px black', color: 'black' }}
+      style={{ boxShadow: '0 4px 4px -6px black', color: '#005bac' }}
     >
       <LinkContainer to='/'>
         <Navbar.Brand href='#home'>
@@ -81,31 +82,6 @@ const Header = () => {
               Resourses
             </Nav.Link>
           </Nav>
-          <Form inline>
-            <InputGroup>
-              <FormControl
-                placeholder='Search'
-                aria-label='Search Course'
-                aria-describedby='basic-addon1'
-                style={{ border: '1px solid #005bac' }}
-              />
-
-              <InputGroup.Append>
-                <InputGroup.Text
-                  id='basic-addon1'
-                  style={{
-                    backgroundColor: '#005bac',
-                    border: '1px solid #005bac',
-                  }}
-                >
-                  <i
-                    className='fas fa-search'
-                    style={{ color: 'whitesmoke' }}
-                  />
-                </InputGroup.Text>
-              </InputGroup.Append>
-            </InputGroup>
-          </Form>
         </Container>
         {userInfo && userInfo.isAdmin ? (
           <NavDropdown title='Admin' id='isAdmin'>

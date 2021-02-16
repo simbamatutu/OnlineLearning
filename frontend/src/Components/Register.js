@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../actions/userActions';
 import Message from '../Components/Message';
 import Loader from '../Components/Loader';
+import Formcontainer from '../Components/Formcontainer';
 export const Register = ({ location, history }) => {
   const [loginName, setLoginName] = useState('');
   const [studentNumber, setStudentNumber] = useState('');
@@ -50,115 +51,113 @@ export const Register = ({ location, history }) => {
   };
 
   return (
-    <Row className='justify-content-md-center'>
-      <Col xs={12} md={6} xl={3}>
-        <h2>Sign Up</h2>
-        {message && <Message variant='danger'>{message}</Message>}
-        {error && <Message variant='danger'>{error}</Message>}
-        {loading && <Loader />}
+    <Formcontainer>
+      <h2>Sign Up</h2>
+      {message && <Message variant='danger'>{message}</Message>}
+      {error && <Message variant='danger'>{error}</Message>}
+      {loading && <Loader />}
 
-        <Form onSubmit={submitHandler}>
-          <Form.Group controlId='name'>
-            <Form.Label>Name</Form.Label>
+      <Form onSubmit={submitHandler}>
+        <Form.Group controlId='name'>
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter Name'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+
+        <Form.Group controlId='loginName'>
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter Username'
+            value={loginName}
+            onChange={(e) => setLoginName(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+
+        <Form.Group controlId='email'>
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type='email'
+            placeholder='Enter Email Address'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group controlId='checkboxControls'>
+          <Form.Check
+            inline
+            label='Student'
+            type='switch'
+            id='studentCheckbox'
+            onChange={(e) => setIsStudent(e.target.checked)}
+          />
+
+          <Form.Check
+            inline
+            label='Teacher'
+            type='switch'
+            id='teacherCheckbox'
+            value={isStudent}
+            onChange={(e) => setIsTeacher(e.target.checked)}
+          />
+        </Form.Group>
+
+        {isTeacher ? (
+          <Form.Group controlId='teacherNumber'>
+            <Form.Label>Teacher Number</Form.Label>
             <Form.Control
               type='text'
-              placeholder='Enter Name'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              placeholder='Enter Teacher Number'
+              value={teacherNumber}
+              onChange={(e) => setTeacherNumber(e.target.value)}
             ></Form.Control>
           </Form.Group>
-
-          <Form.Group controlId='loginName'>
-            <Form.Label>Username</Form.Label>
+        ) : (
+          <Form.Group controlId='studentNumber'>
+            <Form.Label>Student Number</Form.Label>
             <Form.Control
               type='text'
-              placeholder='Enter Username'
-              value={loginName}
-              onChange={(e) => setLoginName(e.target.value)}
+              placeholder='Enter Student Number'
+              value={studentNumber}
+              onChange={(e) => setStudentNumber(e.target.value)}
             ></Form.Control>
           </Form.Group>
+        )}
 
-          <Form.Group controlId='email'>
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type='email'
-              placeholder='Enter Email Address'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-          <Form.Group controlId='checkboxControls'>
-            <Form.Check
-              inline
-              label='Student'
-              type='switch'
-              id='studentCheckbox'
-              onChange={(e) => setIsStudent(e.target.checked)}
-            />
+        <Form.Group controlId='password'>
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type='password'
+            placeholder='Enter Password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
 
-            <Form.Check
-              inline
-              label='Teacher'
-              type='switch'
-              id='teacherCheckbox'
-              value={isStudent}
-              onChange={(e) => setIsTeacher(e.target.checked)}
-            />
-          </Form.Group>
+        <Form.Group controlId='confrimPassword'>
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
+            type='password'
+            placeholder='Confirm Password'
+            value={confirmPassword}
+            onChange={(e) => setConfrimPassword(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
 
-          {isTeacher ? (
-            <Form.Group controlId='teacherNumber'>
-              <Form.Label>Teacher Number</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter Teacher Number'
-                value={teacherNumber}
-                onChange={(e) => setTeacherNumber(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-          ) : (
-            <Form.Group controlId='studentNumber'>
-              <Form.Label>Student Number</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter Student Number'
-                value={studentNumber}
-                onChange={(e) => setStudentNumber(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-          )}
-
-          <Form.Group controlId='password'>
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type='password'
-              placeholder='Enter Password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-
-          <Form.Group controlId='confrimPassword'>
-            <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type='password'
-              placeholder='Confirm Password'
-              value={confirmPassword}
-              onChange={(e) => setConfrimPassword(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-
-          <Button type='submit' variant='primary'>
-            Register
-          </Button>
-        </Form>
-        <Row className='py-3'>
-          <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-            <Col>Have an Account?</Col>
-          </Link>
-        </Row>
-      </Col>
-    </Row>
+        <Button type='submit' variant='primary'>
+          Register
+        </Button>
+      </Form>
+      <Row className='py-3'>
+        <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
+          <Col>Have an Account?</Col>
+        </Link>
+      </Row>
+    </Formcontainer>
   );
 };
 export default Register;

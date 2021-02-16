@@ -13,6 +13,7 @@
 input[type='switch'] {
   cursor: pointer;
 }
+
 .courseHeader {
   background-image: url('./img/Library.jpg');
   background-size: cover;
@@ -20,17 +21,4 @@ input[type='switch'] {
   background-repeat: no-repeat;
 
   background-position: right 20px bottom 10px;
-}
-
-.activityIndicators {
-  margin-top: -3rem;
-}
-@media only screen and (max-width: 600px) {
-  .activitycards {
-    display: inline-flex;
-  }
-
-  .activityIndicators {
-    margin-top: 2rem;
-  }
 }

@@ -7,9 +7,12 @@
 }
 body {
   margin: 0;
+  color: black;
   font-family: 'Nunito', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 code {
@@ -18,4 +21,16 @@ code {
 }
 .btn-primary {
   background-color: #005bac !important;
+}
+.activityIndicators {
+  margin-top: -3rem !important;
+}
+@media only screen and (max-width: 600px) {
+  .activitycards {
+    display: inline-flex;
+  }
+
+  .activityIndicators {
+    margin-top: 2rem;
+  }
 }
