@@ -32,7 +32,16 @@ const authUser = asyncHandler(async (req, res) => {
 // @route POST /api/user
 // @access public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, loginName, password } = req.body;
+  const {
+    name,
+    email,
+    loginName,
+    password,
+    isStudent,
+    isTeacher,
+    studentNumber,
+    teacherNumber,
+  } = req.body;
   const userExists = await User.findOne({ loginName });
 
   if (userExists) {
@@ -45,6 +54,10 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     loginName,
     password,
+    isStudent,
+    isTeacher,
+    studentNumber,
+    teacherNumber,
   });
 
   if (user) {
@@ -54,6 +67,8 @@ const registerUser = asyncHandler(async (req, res) => {
       loginName: user.loginName,
       isTeacher: user.isTeacher,
       isStudent: user.isStudent,
+      studentNumber: user.studentNumber,
+      teacherNumber: user.teacherNumber,
       token: generateTokenfrom(user._id),
     });
   } else {
@@ -74,6 +89,8 @@ const getUserProfile = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       loginName: user.loginName,
+      studentNumber: user.studentNumber,
+      teacherNumber: user.teacherNumber,
       isTeacher: user.isTeacher,
       isStudent: user.isStudent,
     });
@@ -93,6 +110,8 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
     user.loginName = req.body.loginName || user.loginName;
+    user.studentNumber = req.body.studentNumber || user.studentNumber;
+    user.teacherNumber = req.body.teacherNumber || user.teacherNumber;
 
     if (req.body.password) {
       user.password = req.body.password;
@@ -112,4 +131,84 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     throw new error('User Not Found');
   }
 });
-export { authUser, getUserProfile, registerUser, updateUserProfile };
+
+// @desc get all users
+// @route GET /api/users
+// @access private/Admin
+const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({});
+
+  res.json(users);
+});
+
+// @desc delete user
+// @route GET /api/users/:id
+// @access private/Admin
+const deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    await user.remove();
+    res.json({ message: 'User Successfully Deleted' });
+  } else {
+    res.status(404);
+    throw new error('User not found!');
+  }
+});
+
+// @desc get userby ID
+// @route GET /api/users/:id
+// @access private/Admin
+const getUserById = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id).select('-password');
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(404);
+    throw new error('User not found!');
+  }
+});
+
+// @desc update user
+// @route PUT /api/users/:id
+// @access private Admin
+const updateUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.loginName = req.body.loginName || user.loginName;
+    user.studentNumber = req.body.studentNumber || user.studentNumber;
+    user.teacherNumber = req.body.teacherNumber || user.teacherNumber;
+    user.isAdmin = req.body.isAdmin;
+    user.isTeacher = req.body.isTeacher;
+    user.isStudent = req.body.isStudent;
+
+    const updatedUser = await user.save();
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      loginName: updatedUser.loginName,
+      isAdmin: updatedUser.isAdmin,
+      isStudent: updatedUser.isStudent,
+      isTeacher: updatedUser.isTeacher,
+      studentNumber: updatedUser.studentNumber,
+      teacherNumber: updatedUser.teacherNumber,
+    });
+  } else {
+    res.status(404);
+    throw new error('User Not Found');
+  }
+});
+export {
+  authUser,
+  getUserProfile,
+  deleteUser,
+  registerUser,
+  updateUserProfile,
+  getUsers,
+  getUserById,
+  updateUser,
+};

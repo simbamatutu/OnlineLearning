@@ -10,7 +10,9 @@
   background-repeat: no-repeat;
   margin: 0;
 }
-
+input[type='switch'] {
+  cursor: pointer;
+}
 .courseHeader {
   background-image: url('./img/Library.jpg');
   background-size: cover;

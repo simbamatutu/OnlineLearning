@@ -107,7 +107,20 @@ const Header = () => {
             </InputGroup>
           </Form>
         </Container>
-        {userInfo ? (
+        {userInfo && userInfo.isAdmin ? (
+          <NavDropdown title='Admin' id='isAdmin'>
+            <LinkContainer to='/profile'>
+              <NavDropdown.Item>Profile</NavDropdown.Item>
+            </LinkContainer>
+            <LinkContainer to='/admin/user-list'>
+              <NavDropdown.Item>Manage Users</NavDropdown.Item>
+            </LinkContainer>
+            <LinkContainer to='/admin/course-list'>
+              <NavDropdown.Item>Manage Courses</NavDropdown.Item>
+            </LinkContainer>
+            <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+          </NavDropdown>
+        ) : userInfo ? (
           <NavDropdown title={userInfo.loginName} id='username'>
             <LinkContainer to='/profile'>
               <NavDropdown.Item>Profile</NavDropdown.Item>

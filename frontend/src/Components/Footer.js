@@ -8,7 +8,8 @@ export class Footer extends Component {
         style={{
           color: 'whitesmoke',
           backgroundColor: '#005bac',
-          marginTop: '3rem',
+          marginTop: '2rem',
+          width: '100vw',
         }}
       >
         <Container className='pt-3'>
