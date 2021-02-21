@@ -1,6 +1,5 @@
 import express from 'express';
 import asyncHandler from 'express-async-handler';
-const router = express.Router();
 import Course from '../models/courseModel.js';
 
 // @desc Fetch app all Courses
@@ -8,7 +7,6 @@ import Course from '../models/courseModel.js';
 // @access public
 const getCourses = asyncHandler(async (req, res) => {
   const courses = await Course.find({});
-
   res.json(courses);
 });
 
@@ -27,4 +25,22 @@ const getCourseById = asyncHandler(async (req, res) => {
   res.json(courses);
 });
 
-export { getCourseById, getCourses };
+// @desc delete course
+// @route GET /api/courses/:id
+// @access private/Admin
+const deleteCourse = asyncHandler(async (req, res) => {
+  const course = await Course.findById(req.params.id);
+
+  if (course) {
+    await course.remove();
+    res.json({ message: 'Course Successfully Deleted' });
+  } else {
+    res.status(404);
+    throw new error('Course not found!');
+  }
+});
+// @desc create new course
+// @route POST /api/courses
+// @access public
+const registerUser = asyncHandler(async (req, res) => {});
+export { getCourseById, getCourses, deleteCourse };

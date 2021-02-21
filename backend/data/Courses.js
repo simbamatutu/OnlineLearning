@@ -19,7 +19,7 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    name: 'Chemistry',
+    courseName: 'Chemistry',
     courseImage: '/resourses/chemistry.png',
     teacher: 'Steve Rogers',
     teacherImg: '/resourses/dummyPerson.png',
@@ -42,7 +42,7 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    name: 'Big Data',
+    courseName: 'Big Data',
     courseImage: '/resourses/bigdata.png',
     teacher: 'Steve Rogers',
     teacherImg: '/resourses/dummyPerson.png',
@@ -65,7 +65,7 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    name: 'Cognative',
+    courseName: 'Cognative',
     courseImage: '/resourses/cognative.png',
     courseTeacher: 'Steve Rogers',
     teacherImg: '/resourses/dummyPerson.png',
@@ -88,7 +88,7 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    name: 'Elasticity',
+    courseName: 'Elasticity',
     courseImage: '/resourses/elasticity.png',
     teacher: 'Steve Rogers',
     teacherImg: '/resourses/dummyPerson.png',
@@ -111,7 +111,7 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    name: 'Electromagnetic',
+    courseName: 'Electromagnetic',
     courseImage: '/resourses/electromag.png',
     teacher: 'Steve Rogers',
     teacherImg: '/resourses/dummyPerson.png',
@@ -134,7 +134,7 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    name: 'Intro. To China',
+    courseName: 'Intro. To China',
     courseImage: '/resourses/introToChina.png',
     teacher: 'Steve Rogers',
     teacherImg: '/resourses/dummyPerson.png',
@@ -157,7 +157,7 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    name: 'Physics',
+    courseName: 'Physics',
 
     courseImage: '/resourses/physics.png',
     teacher: 'Steve Rogers',
@@ -181,7 +181,7 @@ const Courses = [
     assingments: 'Yes',
   },
   {
-    name: 'Python',
+    courseName: 'Python',
     courseImage: '/resourses/python.png',
     teacher: 'Steve Rogers',
     teacherImg: '/resourses/dummyPerson.png',
