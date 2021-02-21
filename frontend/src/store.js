@@ -1,6 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { courseListReducer } from './reducers/courseReducers';
+import {
+  courseDeleteReducer,
+  courseListReducer,
+} from './reducers/courseReducers';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 import {
@@ -13,7 +16,6 @@ import {
   userUpdateReducer,
 } from './reducers/userReducers';
 const reducer = combineReducers({
-  courseList: courseListReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
@@ -21,6 +23,8 @@ const reducer = combineReducers({
   userList: userListReducer,
   userDelete: userDeleteReducer,
   userUpdate: userUpdateReducer,
+  courseList: courseListReducer,
+  courseDelete: courseDeleteReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

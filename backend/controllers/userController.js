@@ -6,7 +6,7 @@ import generateTokenfrom from '../utils/generateToken.js';
 import User from '../models/userModel.js';
 
 // @desc Auth users and get token
-// @route POST /api/tea chers/login
+// @route POST /api/teachers/login
 // @access public
 const authUser = asyncHandler(async (req, res) => {
   const { loginName, password } = req.body;
@@ -137,7 +137,6 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 // @access private/Admin
 const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find({});
-
   res.json(users);
 });
 

@@ -42,7 +42,7 @@ const UserListScreen = ({ history }) => {
         ) : error ? (
           <Message variant='danger'>{error}</Message>
         ) : (
-          <Table striped bordered hover responsive className='table-sm'>
+          <Table striped bordered hover responsive className='table-md'>
             <thead>
               <tr>
                 <th>School ID</th>
