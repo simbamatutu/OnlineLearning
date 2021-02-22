@@ -1,16 +1,7 @@
 import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  Container,
-  Nav,
-  Navbar,
-  NavDropdown,
-  Form,
-  InputGroup,
-  FormControl,
-  Button,
-} from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
 import fullLogo from '../img/fullLogo.png';
 import miniLogo from '../img/miniLogo.png';
 import logout from '../actions/userActions';

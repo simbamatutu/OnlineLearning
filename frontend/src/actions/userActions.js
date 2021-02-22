@@ -189,7 +189,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
 
 // @desc logout  user
 // @route PUT /api/users
-const logout = () => (dispatch) => {
+export const logout = () => (dispatch) => {
   localStorage.removeItem('userInfo');
   dispatch({ type: USER_LOGOUT });
   //dispatch({ type: USER_UPDATE_PROFILE_RESET });  add this reset stuff

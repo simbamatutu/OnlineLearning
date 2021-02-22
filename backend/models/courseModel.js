@@ -21,7 +21,6 @@ const courseSchema = mongoose.Schema(
 
     overview: {
       type: String,
-      required: true,
     },
     school: {
       type: Number,
@@ -58,7 +57,6 @@ const courseSchema = mongoose.Schema(
     },
     courseNum: {
       type: String,
-      required: true,
     },
     level: {
       type: Number,

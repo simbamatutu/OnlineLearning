@@ -3,67 +3,54 @@ import { Link } from 'react-router-dom';
 import Header from '../Components/Header';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserDetails, updateUser } from '../actions/userActions';
-import { USER_UPDATE_RESET } from '../constants/userContants';
+import { listCourseDetails, updateCourse } from '../actions/courseActions';
+import { COURSE_UPDATE_RESET } from '../constants/courseContants';
 import Message from '../Components/Message';
 import Loader from '../Components/Loader';
 
 export const EditCourseScreen = ({ match, history }) => {
-  const userId = match.params.id;
-  const [loginName, setLoginName] = useState('');
-  const [studentNumber, setStudentNumber] = useState('');
-  const [teacherNumber, setTeacherNumber] = useState('');
-  const [name, setName] = useState('');
-  const [isTeacher, setIsTeacher] = useState(false);
-  const [isStudent, setIsStudent] = useState(false);
-  const [email, setEmail] = useState('');
-  const [isAdmin, setIsAdmin] = useState(false);
+  const courseId = match.params.id;
+  const [courseName, setCourseName] = useState('');
+  const [level, setLevel] = useState('');
+  const [school, setSchool] = useState('');
+
   // const [message, setMessage] = useState(null);
   // const redirect = location.search ? location.search.split('=')[1] : '/';
 
   const dispatch = useDispatch();
-  const userDetails = useSelector((state) => state.userDetails);
-  const { loading, error, user } = userDetails;
+  const courseDetails = useSelector((state) => state.courseDetails);
+  const { loading, error, course } = courseDetails;
 
-  const userUpdate = useSelector((state) => state.userUpdate);
+  const courseUpdate = useSelector((state) => state.courseUpdate);
   const {
     loading: loadingUpdate,
     error: errorUpdate,
     success: successUpdate,
-  } = userUpdate;
+  } = courseUpdate;
 
   useEffect(() => {
     if (successUpdate) {
-      dispatch({ type: USER_UPDATE_RESET });
-      history.push('/admin/user-list');
+      dispatch({ type: COURSE_UPDATE_RESET });
+      history.push('/admin/course-list');
     } else {
-      if (!user.name || user._id !== userId) {
-        dispatch(getUserDetails(userId));
+      if (!course.courseName || course._id !== courseId) {
+        dispatch(listCourseDetails(courseId));
       } else {
-        setName(user.name);
-        setEmail(user.email);
-        setStudentNumber(user.studentNumber);
-        setTeacherNumber(user.teacherNumber);
-        setIsAdmin(user.isAdmin);
-        setIsStudent(user.isStudent);
-        setIsTeacher(user.isTeacher);
-        setLoginName(user.loginName);
+        setCourseName(course.courseName);
+        setLevel(course.level);
+        setSchool(course.school);
       }
     }
-  }, [user, dispatch, userId, successUpdate, history]);
+  }, [courseId, course, dispatch, successUpdate, history]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
-      updateUser({
-        _id: userId,
-        name,
-        email,
-        isAdmin,
-        studentNumber,
-        teacherNumber,
-        isStudent,
-        isTeacher,
+      updateCourse({
+        _id: courseId,
+        courseName,
+        level,
+        school,
       })
     );
   };
@@ -71,12 +58,12 @@ export const EditCourseScreen = ({ match, history }) => {
   return (
     <React.Fragment>
       <Header />
-      <Link to='/admin/user-list' className='btn btn-light my-3'>
+      <Link to='/admin/course-list' className='btn btn-light my-3'>
         Back
       </Link>
       <Row className='justify-content-md-center'>
         <Col xs={12} md={6} xl={3}>
-          <h2>Edit User</h2>
+          <h2>Edit Course</h2>
           {loadingUpdate && <Loader />}
           {/* config this messaging stuff */}
           {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
@@ -86,80 +73,34 @@ export const EditCourseScreen = ({ match, history }) => {
             <Message variant='danger'>{error}</Message>
           ) : (
             <Form onSubmit={submitHandler}>
-              <Form.Group controlId='name'>
-                <Form.Label>Name</Form.Label>
+              <Form.Group controlId='coursename'>
+                <Form.Label>Course Name</Form.Label>
                 <Form.Control
                   type='text'
-                  placeholder='Enter Name'
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  placeholder='Enter Course Name'
+                  value={courseName}
+                  onChange={(e) => setCourseName(e.target.value)}
                 ></Form.Control>
               </Form.Group>
 
-              <Form.Group controlId='loginName'>
-                <Form.Label>Username</Form.Label>
+              <Form.Group controlId='school'>
+                <Form.Label>school</Form.Label>
                 <Form.Control
                   type='text'
-                  placeholder='Enter Username'
-                  value={loginName}
-                  onChange={(e) => setLoginName(e.target.value)}
+                  placeholder='Enter School'
+                  value={school}
+                  onChange={(e) => setSchool(e.target.value)}
                 ></Form.Control>
               </Form.Group>
 
-              <Form.Group controlId='email'>
-                <Form.Label>Email</Form.Label>
+              <Form.Group controlId='level'>
+                <Form.Label>level</Form.Label>
                 <Form.Control
-                  type='email'
-                  placeholder='Enter Email Address'
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  type='text'
+                  placeholder='Enter level'
+                  value={level}
+                  onChange={(e) => setLevel(e.target.value)}
                 ></Form.Control>
-              </Form.Group>
-              {user.isTeacher ? (
-                <Form.Group controlId='teacherNumber'>
-                  <Form.Label>Teacher Number</Form.Label>
-                  <Form.Control
-                    type='text'
-                    placeholder='Enter Teacher Number'
-                    value={teacherNumber}
-                    onChange={(e) => setTeacherNumber(e.target.checked)}
-                  ></Form.Control>
-                </Form.Group>
-              ) : (
-                <Form.Group controlId='studentNumber'>
-                  <Form.Label>Student Number</Form.Label>
-                  <Form.Control
-                    type='text'
-                    placeholder='Enter Student Number'
-                    value={studentNumber}
-                    onChange={(e) => setStudentNumber(e.target.checked)}
-                  ></Form.Control>
-                </Form.Group>
-              )}
-              <Form.Group controlId='checkboxControls'>
-                <Form.Check
-                  inline
-                  label='isStudent'
-                  type='switch'
-                  checked={isStudent}
-                  id='studentCheckbox'
-                  onChange={(e) => setIsStudent(e.target.checked)}
-                />
-                <Form.Check
-                  inline
-                  type='switch'
-                  label='isTeacher'
-                  checked={isTeacher}
-                  onChange={(e) => setIsTeacher(e.target.checked)}
-                ></Form.Check>
-
-                <Form.Check
-                  inline
-                  type='switch'
-                  label='isAdmin'
-                  checked={isAdmin}
-                  onChange={(e) => setIsAdmin(e.target.checked)}
-                />
               </Form.Group>
 
               <Button type='submit' variant='primary'>
