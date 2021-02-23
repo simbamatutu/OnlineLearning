@@ -1,5 +1,4 @@
-#  React App
-
+# React Node App
 
 ## Available Scripts
 

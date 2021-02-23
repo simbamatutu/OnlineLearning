@@ -2,10 +2,15 @@ import React, { useEffect } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Button, Container, Table, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { listCourses, deleteCourse } from '../actions/courseActions';
+import {
+  listCourses,
+  deleteCourse,
+  createCourse,
+} from '../actions/courseActions';
 import Message from '../Components/Message';
 import Loader from '../Components/Loader';
 import Header from '../Components/Header';
+import { COURSE_CREATE_RESET } from '../constants/courseContants';
 
 const CourseListScreen = ({ history, match }) => {
   const dispatch = useDispatch();
@@ -21,14 +26,33 @@ const CourseListScreen = ({ history, match }) => {
     error: errorDelete,
     sucess: successDelete,
   } = courseDelete;
-
+  const courseCreate = useSelector((state) => state.courseCreate);
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    course: createdCourse,
+  } = courseCreate;
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(listCourses());
-    } else {
-      history.push('/login');
+    dispatch({ type: COURSE_CREATE_RESET });
+
+    if (!userInfo.isAdmin) {
+      history.push('login');
     }
-  }, [dispatch, history, userInfo, successDelete]);
+
+    if (successCreate) {
+      history.push(`/admin/courses/${createdCourse._id}/edit`);
+    } else {
+      dispatch(listCourses());
+    }
+  }, [
+    dispatch,
+    history,
+    userInfo,
+    successDelete,
+    successCreate,
+    createdCourse,
+  ]);
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure?')) {
@@ -36,8 +60,8 @@ const CourseListScreen = ({ history, match }) => {
     }
   };
 
-  const createCourseHandler = (course) => {
-    // dispatch(deleteCOurse(id));
+  const createCourseHandler = () => {
+    dispatch(createCourse());
   };
   return (
     <>
@@ -55,13 +79,14 @@ const CourseListScreen = ({ history, match }) => {
         </Row>
         {loadingDelete && <Loader />}
         {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
-
+        {loadingCreate && <Loader />}
+        {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
         {loading ? (
           <Loader />
         ) : error ? (
           <Message variant='danger'>{error}</Message>
         ) : (
-          <Table striped bordered hover responsive className='table-md'>
+          <Table striped bordered hover responsive className='table-sm'>
             <thead>
               <tr>
                 <th>Course Number</th>
@@ -89,11 +114,13 @@ const CourseListScreen = ({ history, match }) => {
                   <td>{course.language}</td>
                   <td>{course.enrolled}</td>
                   <td>{course.maxCapacity}</td>
-                  <td>{course.maxCapacity - course.enrolled}</td>
+                  <td>
+                    {course.maxCapacity && course.maxCapacity - course.enrolled}
+                  </td>
                   <td>{course.startingWeek}</td>
                   <td>{course.endingWeek}</td>
                   <td>
-                    <LinkContainer to={`/admin/course/${course._id}/edit`}>
+                    <LinkContainer to={`/admin/courses/${course._id}/edit`}>
                       <Button variant='light' className='btn-sm'>
                         <i className='fas fa-edit'></i>
                       </Button>
