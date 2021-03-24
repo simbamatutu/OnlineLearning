@@ -15,7 +15,7 @@ function Coursecard(props) {
           variant='top'
           src={props.course.courseImage}
           alt='CoursePic'
-          style={{ minHeight: '10rem', minWidth: '13rem' }}
+          style={{ minHeight: '10rem', minwidth: '13rem' }}
         />
       </Link>
       <Card.Body className='p-0'>

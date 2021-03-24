@@ -50,7 +50,7 @@ export default function Coursescreen({ match }) {
           <h2
             style={{ color: '#fff', paddingTop: '20vh', paddingLeft: '10px' }}
           >
-            {course.name}
+            {course.courseName}
           </h2>
         </div>
         <Card className='p-3 mr-3 mb-3'>
@@ -130,7 +130,7 @@ export default function Coursescreen({ match }) {
               <Courseoverview
                 overview={course.overview}
                 school={course.school}
-                courseName={course.name}
+                courseName={course.courseName}
                 courseImg={course.courseImage}
                 level={course.level}
                 courseNum={course.courseNum}

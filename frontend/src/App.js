@@ -14,7 +14,7 @@ import { EditCourseScreen } from './Screens/EditCourseScreen';
 function App() {
   return (
     <Router>
-      <main style={{ minHeight: '80vh' }}>
+      <main style={{ minheight: '80vh' }}>
         <Route path='/' component={Homescreen} exact />
         <Route path='/Signup' component={Signup} />
         <Route path='/Login' component={Login} />

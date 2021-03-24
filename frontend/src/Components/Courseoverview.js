@@ -1,23 +1,23 @@
 import React from 'react';
 
-import { Image, Media, Card, Row, Col, ListGroup } from 'react-bootstrap';
+import { Card, Row, Col, ListGroup } from 'react-bootstrap';
 export default function Courseoverview(props) {
   return (
     <Row>
-      <Col md={9}>
-        <Media>
-          <Image
-            className='my-3 p-1 rounded'
-            minWidth='12rem'
-            minHeight='11rem'
-            src={props.courseImg}
-            alt='Generic placeholder'
-          />
-          <Media.Body className='p-3'>
-            <h4>{props.courseName}</h4>
-            <p className='text-justify'>{props.overview}</p>
-          </Media.Body>
-        </Media>
+      <Col md={9} className='overviewBody'>
+        <img
+          className='my-2'
+          style={{
+            float: 'left',
+            minWidth: '12rem',
+            minHeight: '11rem',
+            padding: '0 2em 2em 0',
+          }}
+          src={props.courseImg}
+          alt='course Img'
+        />
+        <h4>{props.courseName}</h4>
+        <p className='p-3 text-justify'>{props.overview}</p>
       </Col>
 
       <Col md={3}>
