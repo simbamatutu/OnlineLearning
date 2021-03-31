@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import Header from '../Components/Header';
+import axios from 'axios';
 import { Form, Button, Row, Col, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { listCourseDetails, updateCourse } from '../actions/courseActions';
@@ -12,7 +13,9 @@ export const EditCourseScreen = ({ match, history }) => {
   const courseId = match.params.id;
   const [courseName, setCourseName] = useState('');
   const [level, setLevel] = useState('');
+  const [courseImage, setCourseImage] = useState('');
   const [school, setSchool] = useState('');
+  const [uploading, setUploading] = useState(false);
 
   // const [message, setMessage] = useState(null);
   // const redirect = location.search ? location.search.split('=')[1] : '/';
@@ -39,10 +42,32 @@ export const EditCourseScreen = ({ match, history }) => {
         setCourseName(course.courseName);
         setLevel(course.level);
         setSchool(course.school);
+        setCourseImage(course.courseImage);
       }
     }
   }, [courseId, course, dispatch, successUpdate, history]);
 
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('image', file);
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      };
+
+      const { data } = await axios.post('/api/upload', formData, config);
+      setCourseImage(data);
+      setUploading(false);
+    } catch (error) {
+      console.error(error);
+      setUploading(false);
+    }
+  };
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
@@ -50,6 +75,7 @@ export const EditCourseScreen = ({ match, history }) => {
         _id: courseId,
         courseName,
         level,
+        courseImage,
         school,
       })
     );
@@ -83,6 +109,22 @@ export const EditCourseScreen = ({ match, history }) => {
                     value={courseName}
                     onChange={(e) => setCourseName(e.target.value)}
                   ></Form.Control>
+                </Form.Group>
+                <Form.Group controlId='image'>
+                  <Form.Label>Course Image</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter course image Url'
+                    value={courseImage}
+                    onChange={(e) => setCourseImage(e.target.value)}
+                  ></Form.Control>
+                  <Form.File
+                    id='image-file'
+                    label='Choose image'
+                    custom
+                    onChange={uploadFileHandler}
+                  ></Form.File>
+                  {uploading && <Loader />}
                 </Form.Group>
 
                 <Form.Group controlId='school'>

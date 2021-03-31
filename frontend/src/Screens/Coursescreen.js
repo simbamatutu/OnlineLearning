@@ -4,6 +4,7 @@ import Header from '../Components/Header';
 import Teacher from '../Components/Teacher';
 import Footer from '../Components/Footer';
 import { Link } from 'react-router-dom';
+import Meta from '../Components/Meta';
 import { LinkContainer } from 'react-router-bootstrap';
 import {
   Container,
@@ -42,6 +43,7 @@ export default function Coursescreen({ match }) {
   return (
     <React.Fragment>
       <Header />
+      <Meta title={course.courseName} />
       <Container className='p-0 mt-1'>
         <LinkContainer to='/'>
           <Button className=' my-3 btn'>Back</Button>

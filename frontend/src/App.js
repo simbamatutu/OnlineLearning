@@ -33,6 +33,7 @@ function App() {
 
         <Route path='/admin/course-list' component={CourseListScreen} />
         <Route path='/admin/courses/:id/edit' component={EditCourseScreen} />
+        <Route path='/search/:keyword' component={Homescreen} />
       </main>
     </Router>
   );

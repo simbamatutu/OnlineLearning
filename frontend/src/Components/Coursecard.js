@@ -24,7 +24,7 @@ function Coursecard(props) {
             to={`/courses/${props.course._id}`}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
-            <strong>{props.course.name}</strong>{' '}
+            <strong>{props.course.courseName}</strong>{' '}
           </Link>
           <small>{props.course.courseNum}</small>
         </Card.Title>

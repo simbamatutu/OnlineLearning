@@ -1,11 +1,13 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import colors from 'colors';
+import path from 'path';
 import connectDB from './config/db.js';
 import morgan from 'morgan';
 
 import courseRoutes from './routes/courseRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 dotenv.config();
 connectDB();
 const app = express();
@@ -19,7 +21,12 @@ app.get('/', (req, res) => {
 
 app.use('/api/courses', courseRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/upload', uploadRoutes);
 
+//make a folder static the upload folder
+
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 //Error handler
 app.use((req, res, next) => {
   const error = new Error(`Not Found - ${req.originalUrl}`);
