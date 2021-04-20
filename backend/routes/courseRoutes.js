@@ -17,6 +17,6 @@ router
   .delete(protect, isAdmin, deleteCourse)
   .put(protect, isAdmin, updateCourse);
 router.route('/courses/:id').get(getCourseById);
-router.route('/courses/:name/:id').get(getCourseById);
+//router.route('/courses/:name/:id').get(getCourseById);
 
 export default router;

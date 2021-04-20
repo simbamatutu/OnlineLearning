@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
-import Announcements from '../Components/Announcements';
-import Lessons from '../Components/Lessons';
-import Assignments from '../Components/Assingments';
-import Exams from '../Components/Exams';
-import Discussions from '../Components/Discussions';
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
+import Announcements from '../../Components/Announcements';
+import Lessons from '../../Components/Lessons';
+import Assignments from '../../Components/Assingments';
+import Exams from '../../Components/Exams';
+import Discussions from '../../Components/Discussions';
 import {
   Container,
   Tab,
@@ -19,7 +19,6 @@ import {
   Card,
 } from 'react-bootstrap';
 export default function Courseware({ match }) {
-  console.log(match);
   const [course, setCourse] = useState({});
 
   useEffect(() => {

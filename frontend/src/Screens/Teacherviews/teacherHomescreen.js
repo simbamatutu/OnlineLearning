@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
 import { Link } from 'react-router-dom';
 
 import { Container, Button } from 'react-bootstrap';

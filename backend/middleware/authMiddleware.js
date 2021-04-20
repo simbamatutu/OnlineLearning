@@ -36,4 +36,13 @@ const isAdmin = (req, res, next) => {
   }
 };
 
-export { protect, isAdmin };
+const isTeacher = (req, res, next) => {
+  if (req.user && req.user.isTeacher) {
+    next();
+  } else {
+    res.status(401);
+    throw new Error('Not authorized.You are not Teacher');
+  }
+};
+
+export { protect, isAdmin, isTeacher };

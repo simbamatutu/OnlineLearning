@@ -20,7 +20,7 @@ const Searchbox = ({ history }) => {
         placeholder='Search...'
         className='mr-sm-2 ml-sm-5'
       ></Form.Control>
-      <Button type='submit'>searc</Button>
+      <Button type='submit'>Search</Button>
     </Form>
   );
 };
