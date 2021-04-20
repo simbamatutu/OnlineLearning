@@ -15,7 +15,7 @@ function Coursecard(props) {
           variant='top'
           src={props.course.courseImage}
           alt='CoursePic'
-          style={{ minHeight: '10rem', minWidth: '13rem' }}
+          style={{ minHeight: '10rem', minwidth: '13rem' }}
         />
       </Link>
       <Card.Body className='p-0'>
@@ -24,7 +24,7 @@ function Coursecard(props) {
             to={`/courses/${props.course._id}`}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
-            <strong>{props.course.name}</strong>{' '}
+            <strong>{props.course.courseName}</strong>{' '}
           </Link>
           <small>{props.course.courseNum}</small>
         </Card.Title>

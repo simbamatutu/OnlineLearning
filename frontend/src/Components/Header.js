@@ -3,8 +3,10 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
 import fullLogo from '../img/fullLogo.png';
+import { Route } from 'react-router-dom';
 import miniLogo from '../img/miniLogo.png';
 import logout from '../actions/userActions';
+import Searchbox from './Searchbox';
 
 const width =
   window.innerWidth ||
@@ -38,6 +40,7 @@ const Header = () => {
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
         <Container className='ml-5 mr-9'>
+          <Route render={({ history }) => <Searchbox history={history} />} />
           <Nav>
             <NavDropdown
               title='Courses'

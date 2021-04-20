@@ -10,7 +10,7 @@ export default function Announcements(props) {
               <h3>Welcome Back,</h3>
             </Row>
             <Row>
-              <h4>Natasha Romanoff.</h4>
+              <h4>Romanoff.</h4>
             </Row>
           </Col>
           <Col className='float-right'>

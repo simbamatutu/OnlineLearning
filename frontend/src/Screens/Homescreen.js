@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
-
+import Message from '../Components/Message';
+import Meta from '../Components/Meta';
+import Loader from '../Components/Loader';
+import { listCourses } from '../actions/courseActions';
 import Coursecard from '../Components/Coursecard';
 import {
   Container,
@@ -14,20 +18,19 @@ import {
   Card,
 } from 'react-bootstrap';
 
-export default function Homescreen() {
-  const [courses, setCourses] = useState([]);
+export default function Homescreen({ match }) {
+  const keyword = match.params.keyword;
 
+  const dispatch = useDispatch();
+  const courseList = useSelector((state) => state.courseList);
+  const { loading, error, courses } = courseList;
   useEffect(() => {
-    const fetchCourses = async () => {
-      const { data } = await axios.get('/api/courses');
-      setCourses(data);
-    };
-
-    fetchCourses();
-  }, []);
+    dispatch(listCourses(keyword));
+  }, [dispatch, keyword]);
 
   return (
     <React.Fragment>
+      <Meta />
       <Header />
       <div className='Hero'>
         <Container className='pt-5'>
@@ -347,28 +350,36 @@ export default function Homescreen() {
       <Container className='middleTab'>
         <Nav
           variant='tabs'
-          defaultActiveKey='/home'
+          defaultActiveKey=''
           className='row d-flex justify-content-center'
         >
           <Nav.Item>
             <Nav.Link href=''>Trending</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey='link-1'>Most Popular</Nav.Link>
+            <Nav.Link eventKey='link-1' default>
+              Most Popular
+            </Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link eventKey='link-2'>Most Recent</Nav.Link>
           </Nav.Item>
         </Nav>
-        <CardGroup style={{ margin: '3rem' }}>
-          <Row>
-            {courses.map((course) => (
-              <Col sm={12} md={6} lg={4} xl={3} key={course._id}>
-                <Coursecard course={course} />
-              </Col>
-            ))}
-          </Row>
-        </CardGroup>
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message variant='danger'>{error}</Message>
+        ) : (
+          <CardGroup style={{ margin: '3rem' }}>
+            <Row>
+              {courses.map((course) => (
+                <Col sm={12} md={6} lg={4} xl={3} key={course._id}>
+                  <Coursecard course={course} />
+                </Col>
+              ))}
+            </Row>
+          </CardGroup>
+        )}
       </Container>
       <Footer />
     </React.Fragment>
