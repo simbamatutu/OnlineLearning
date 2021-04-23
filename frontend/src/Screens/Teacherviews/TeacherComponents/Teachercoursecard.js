@@ -3,7 +3,6 @@ import React from 'react';
 import { Row, Col, Button, Card } from 'react-bootstrap';
 
 function Teachercoursecard({ course }) {
-  console.log(course.category);
   return (
     <Card
       className='my-3 p-1 rounded'

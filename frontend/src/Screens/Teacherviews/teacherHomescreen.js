@@ -14,21 +14,20 @@ export default function TeacherHomescreen({ history }) {
   const dispatch = useDispatch();
   const userDetails = useSelector((state) => state.userDetails);
   const userLogin = useSelector((state) => state.userLogin);
-  const {
-    userInfo: { _id },
-  } = userLogin;
+  const { userInfo } = userLogin;
 
-  const {
-    loading,
-    error,
-    user: { coursesTaught },
-  } = userDetails;
+  const { loading, error, user } = userDetails;
 
   const [message, setMessage] = useState(null);
 
   useEffect(() => {
-    dispatch(getUserDetails(_id));
-  }, [dispatch, _id]);
+    dispatch(getUserDetails('profile'));
+    // if (!userInfo) {
+    //   history.push('/');
+    // } else {
+    //   dispatch(getUserDetails('profile'));
+    // }
+  }, [dispatch, history, userInfo]);
   return (
     <div>
       <Header />
@@ -53,7 +52,7 @@ export default function TeacherHomescreen({ history }) {
           </Col>
         </Row>
         {message && <Message variant='danger'>{message}</Message>}
-        {loading ? (
+        {/* {loading ? (
           <Loader />
         ) : error ? (
           <Message variant='danger'>{error}</Message>
@@ -71,7 +70,7 @@ export default function TeacherHomescreen({ history }) {
               )}
             </Row>
           </CardGroup>
-        )}
+        )} */}
       </Container>
       <Footer />
     </div>

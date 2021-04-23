@@ -23,7 +23,6 @@ const Header = () => {
   };
   return (
     <Navbar
-      className='mr-4'
       collapseOnSelect
       expand='lg'
       style={{ boxShadow: '0 4px 4px -6px black', color: '#005bac' }}
