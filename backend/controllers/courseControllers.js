@@ -82,4 +82,6 @@ const updateCourse = asyncHandler(async (req, res) => {
   }
 });
 
+//////////////////////////Regex 3000//////////////////////////////////
+
 export { getCourseById, getCourses, deleteCourse, updateCourse, createCourse };

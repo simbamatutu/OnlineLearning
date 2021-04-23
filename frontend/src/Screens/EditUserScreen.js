@@ -8,6 +8,7 @@ import { getUserDetails, updateUser } from '../actions/userActions';
 import { USER_UPDATE_RESET } from '../constants/userContants';
 import Message from '../Components/Message';
 import Loader from '../Components/Loader';
+import Footer from '../Components/Footer';
 
 export const EditUserScreen = ({ match, history }) => {
   const userId = match.params.id;
@@ -32,7 +33,7 @@ export const EditUserScreen = ({ match, history }) => {
     error: errorUpdate,
     success: successUpdate,
   } = userUpdate;
-
+  console.log(user.about);
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: USER_UPDATE_RESET });
@@ -72,8 +73,7 @@ export const EditUserScreen = ({ match, history }) => {
   return (
     <React.Fragment>
       <Header />
-
-      <Container className='p-0 mt-1'>
+      <Container className='p-1 mt-1' style={{ height: '80vh' }}>
         <LinkContainer to='/admin/user-list'>
           <Button className=' my-3 btn'>Back</Button>
         </LinkContainer>
@@ -173,6 +173,7 @@ export const EditUserScreen = ({ match, history }) => {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </React.Fragment>
   );
 };

@@ -17,6 +17,7 @@ const authUser = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      profilePic: user.profilePic,
       isTeacher: user.isTeacher,
       loginName: user.loginName,
       isAdmin: user.isAdmin,
@@ -93,6 +94,8 @@ const getUserProfile = asyncHandler(async (req, res) => {
       teacherNumber: user.teacherNumber,
       isTeacher: user.isTeacher,
       isStudent: user.isStudent,
+      enrolledCourses: user.enrolledCourses,
+      coursesTaught: user.coursesTaught,
     });
   } else {
     res.status(404);

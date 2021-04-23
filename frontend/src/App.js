@@ -7,20 +7,20 @@ import Coursescreen from './Screens/Coursescreen';
 import Courseware from './Screens/Studentviews/Courseware';
 import Profilescreen from './Screens/Profilescreen';
 import UserListScreen from './Screens/UserListScreen';
-import teacherHomescreen from './Screens/Teacherviews/teacherHomescreen';
+import TeacherHomescreen from './Screens/Teacherviews/TeacherHomescreen';
 import { EditUserScreen } from './Screens/EditUserScreen';
 import CourseListScreen from './Screens/CourseListScreen';
 import { EditCourseScreen } from './Screens/EditCourseScreen';
 function App() {
   return (
     <Router>
-      <main style={{ minheight: '80vh' }}>
+      <main style={{ minheight: '100vh' }}>
         <Route path='/' component={Homescreen} exact />
         <Route path='/Signup' component={Signup} />
         <Route path='/Login' component={Login} />
         <Route path='/courses/:id' exact component={Coursescreen} />
         <Route path='/courses/courseware/:id' component={Courseware} />
-        <Route path='/teacherHome' component={teacherHomescreen} />
+        <Route path='/teacher' component={TeacherHomescreen} />
         <Route path='/profile' component={Profilescreen} />
         <Route path='/admin/user/:id/edit' component={EditUserScreen} />
         <Route path='/admin/user-list' component={UserListScreen} />
