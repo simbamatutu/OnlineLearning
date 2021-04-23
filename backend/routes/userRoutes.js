@@ -13,7 +13,7 @@ import {
   updateUser,
 } from '../controllers/userController.js';
 
-router.route('/').post(registerUser).get(protect, isAdmin, isTeacher, getUsers);
+router.route('/').post(registerUser).get(protect, isAdmin, getUsers);
 router.post('/login', authUser);
 router
   .route('/profile')

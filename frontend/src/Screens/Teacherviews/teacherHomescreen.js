@@ -13,16 +13,22 @@ import Loader from '../../Components/Loader';
 export default function TeacherHomescreen({ history }) {
   const dispatch = useDispatch();
   const userDetails = useSelector((state) => state.userDetails);
-  const { loading, error, user } = userDetails;
-
   const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
+  const {
+    userInfo: { _id },
+  } = userLogin;
+
+  const {
+    loading,
+    error,
+    user: { coursesTaught },
+  } = userDetails;
 
   const [message, setMessage] = useState(null);
 
   useEffect(() => {
-    dispatch(getUserDetails('profile'));
-  }, [dispatch]);
+    dispatch(getUserDetails(_id));
+  }, [dispatch, _id]);
   return (
     <div>
       <Header />
@@ -54,11 +60,15 @@ export default function TeacherHomescreen({ history }) {
         ) : (
           <CardGroup>
             <Row>
-              {/* {coursesTaught.map((course) => (
-                <Col sm={12} md={6} lg={12} xl={12} key={course._id}>
-                  <TeacherCourses course={course} />
-                </Col>
-              ))} */}
+              {coursesTaught ? (
+                coursesTaught.map((course) => (
+                  <Col sm={12} md={6} lg={12} xl={12} key={course._id}>
+                    <TeacherCourses course={course} />
+                  </Col>
+                ))
+              ) : (
+                <Loader />
+              )}
             </Row>
           </CardGroup>
         )}

@@ -354,7 +354,7 @@ export default function Homescreen({ match }) {
           className='row d-flex justify-content-center'
         >
           <Nav.Item>
-            <Nav.Link href=''>Trending</Nav.Link>
+            <Nav.Link href='#'>Trending</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link eventKey='link-1' default>
