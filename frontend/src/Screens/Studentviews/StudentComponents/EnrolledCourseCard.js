@@ -10,20 +10,25 @@ function EnrolledCourseCard({ course }) {
         }}
       >
         <Row className='m-2'>
-          <Col>
-            <Card.Img variant='top' src={course.courseImage} />
-          </Col>
+          <Card.Img
+            variant='top'
+            src={course.courseImage}
+            style={{ width: '15rem' }}
+          />
+
           <Col>
             <Row>
               <Card.Title className='ml-auto'>
                 <strong>{course.courseName}</strong>
               </Card.Title>
             </Row>
-            {/* <Row>
-            {course.category.map((course) => (
-              <Card.Subtitle key={course._id}>{course}</Card.Subtitle>
-            ))}
-          </Row> */}
+            {
+              <Row>
+                {course.category.map((course) => (
+                  <Card.Subtitle key={course._id}>{course}</Card.Subtitle>
+                ))}
+              </Row>
+            }
           </Col>
         </Row>
         <Row className='m-1'>

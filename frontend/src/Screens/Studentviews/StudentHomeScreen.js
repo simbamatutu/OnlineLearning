@@ -3,7 +3,7 @@ import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import { Container, Button, Row, Col, CardGroup } from 'react-bootstrap';
 import EnrolledCourseCard from './StudentComponents/EnrolledCourseCard';
-import { useSelector, dispatch, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getUserDetails } from '../../actions/userActions';
 import Message from '../../Components/Message';
 import Loader from '../../Components/Loader';
@@ -18,11 +18,12 @@ const StudentHomeScreen = ({ history }) => {
     error,
     user: { enrolledCourses },
   } = userDetails;
+
   useEffect(() => {
     if (!userInfo) {
       history.push('/');
     } else {
-      dispatch(getUserDetails);
+      dispatch(getUserDetails('profile'));
     }
   }, [history, userInfo, dispatch]);
   return (
@@ -36,17 +37,15 @@ const StudentHomeScreen = ({ history }) => {
           <Message variant='danger'>{error}</Message>
         ) : (
           <CardGroup>
-            <Row>
-              {enrolledCourses ? (
-                enrolledCourses.map((course) => (
-                  <Col sm={12} md={6} lg={12} xl={12} key={course._id}>
-                    <EnrolledCourseCard course={course} />
-                  </Col>
-                ))
-              ) : (
-                <Loader />
-              )}
-            </Row>
+            {enrolledCourses ? (
+              enrolledCourses.map((course) => (
+                <Col sm={12} md={12} lg={12} xl={12} key={course._id}>
+                  <EnrolledCourseCard course={course} />
+                </Col>
+              ))
+            ) : (
+              <Loader />
+            )}
           </CardGroup>
         )}
       </Container>

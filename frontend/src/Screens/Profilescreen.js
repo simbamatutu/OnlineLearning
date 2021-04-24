@@ -24,17 +24,19 @@ const Profilescreen = ({ location, history }) => {
 
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
   const { success } = userUpdateProfile;
-
+  console.log(user);
   useEffect(() => {
     if (!userInfo) {
-      history.push('/');
+      history.push('/login');
     } else {
       if (!user.name) {
+        //dispatch userupdate request and check source
         dispatch(getUserDetails('profile'));
       } else {
         setName(user.name);
         setEmail(user.email);
         setLoginName(user.loginName);
+        console.log(user.isTeacher);
       }
     }
   }, [dispatch, history, userInfo, user]);
