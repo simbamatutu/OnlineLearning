@@ -7,7 +7,7 @@ import Coursescreen from './Screens/Coursescreen';
 import Courseware from './Screens/Studentviews/Courseware';
 import Profilescreen from './Screens/Profilescreen';
 import UserListScreen from './Screens/UserListScreen';
-import TeacherHomescreen from './Screens/Teacherviews/juam';
+import TeacherHomescreen from './Screens/Teacherviews/TeacherHomescreen';
 import { EditUserScreen } from './Screens/EditUserScreen';
 import CourseListScreen from './Screens/CourseListScreen';
 import StudentHomeScreen from './Screens/Studentviews/StudentHomeScreen';
