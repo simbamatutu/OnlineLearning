@@ -15,7 +15,7 @@ router
   .route('/:id')
   .get(getCourseById)
   .delete(protect, isAdmin, deleteCourse)
-  .put(protect, isAdmin, updateCourse);
+  .put(protect, updateCourse); /// REMEMBER TO PUT BCK MIDDLEWARE
 router.route('/courses/:id').get(getCourseById);
 //router.route('/courses/:name/:id').get(getCourseById);
 

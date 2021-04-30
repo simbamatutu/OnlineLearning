@@ -3,17 +3,27 @@ import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import TeacherCourses from './TeacherComponents/Teachercoursecard';
 import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 import Search from '../../Components/Searchbox';
 import { Container, Button, Row, Col, CardGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserDetails } from '../../actions/userActions';
 import Message from '../../Components/Message';
 import Loader from '../../Components/Loader';
+import { createCourse } from '../../actions/courseActions';
 
 export default function TeacherHomescreen({ history }) {
   const dispatch = useDispatch();
   const userDetails = useSelector((state) => state.userDetails);
   const userLogin = useSelector((state) => state.userLogin);
+  const courseCreate = useSelector((state) => state.courseCreate);
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    course: createdCourse,
+  } = courseCreate;
+
   const { userInfo } = userLogin;
 
   const {
@@ -26,21 +36,37 @@ export default function TeacherHomescreen({ history }) {
 
   useEffect(() => {
     dispatch(getUserDetails('profile'));
+
     if (!userInfo) {
-      history.push('/');
+      history.push('login');
     } else {
       dispatch(getUserDetails('profile'));
     }
-  }, [dispatch, history, userInfo]);
+    if (successCreate) {
+      history.push(`/admin/courses/${createdCourse._id}/edit`);
+    } else {
+      dispatch(getUserDetails('profile')); //PETRA
+    }
+  }, [dispatch, history, userInfo, successCreate, createdCourse]);
+  const createCourseHandler = () => {
+    dispatch(createCourse());
+  };
   return (
     <div>
       <Header />
       <Container className='mt-3 pt-3' style={{ height: '80vh' }}>
         <Row>
           <Col>
-            <Link to='/create-course' className='mr-1'>
-              <Button variant='primary'>Create</Button>{' '}
-            </Link>
+            <LinkContainer to={``}>
+              <Button
+                variant='primary'
+                className='btn-sm mr-2'
+                onClick={createCourseHandler}
+              >
+                Create
+                <i className='fas fa-edit'></i>
+              </Button>
+            </LinkContainer>
             <Link to='/create-course'>Import</Link>
           </Col>
           <Col>

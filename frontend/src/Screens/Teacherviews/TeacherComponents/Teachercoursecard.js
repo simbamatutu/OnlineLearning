@@ -42,7 +42,7 @@ function Teachercoursecard({ course }) {
         </Col>
         <Col className='m-2'>
           <Row>
-            <Button className='justify-content-center'>View</Button>
+            <Button className='justify-content-center'>Edit</Button>
           </Row>
         </Col>
       </Row>

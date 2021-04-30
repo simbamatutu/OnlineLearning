@@ -2,13 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import Header from '../Components/Header';
 import axios from 'axios';
-import { Form, Button, Row, Col, Container } from 'react-bootstrap';
+import {
+  Form,
+  Button,
+  Row,
+  Col,
+  Container,
+  Card,
+  Tabs,
+  Tab,
+} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { listCourseDetails, updateCourse } from '../actions/courseActions';
 import { COURSE_UPDATE_RESET } from '../constants/courseContants';
 import Message from '../Components/Message';
 import Loader from '../Components/Loader';
-
+import { Link } from 'react-router-dom';
+import CourseContent from './Teacherviews/TeacherComponents/CourseContent';
+import CourseDescription from './Teacherviews/TeacherComponents/CourseDescription';
+import CourseFeatures from './Teacherviews/TeacherComponents/CourseFeatures';
 export const EditCourseScreen = ({ match, history }) => {
   const courseId = match.params.id;
   const [courseName, setCourseName] = useState('');
@@ -84,17 +96,83 @@ export const EditCourseScreen = ({ match, history }) => {
   return (
     <React.Fragment>
       <Header />
+      <LinkContainer to='/admin/course-list'>
+        <Button className=' my-3 mx-3 btn'>Back</Button>
+      </LinkContainer>
       <Container className='p-0 mt-1'>
         <LinkContainer to='/admin/course-list'>
-          <Button className=' my-3 btn'>Back</Button>
+          <Button className=' my-3 mx-3 btn'>Save</Button>
         </LinkContainer>
+        <Link to='/login'>Discard</Link>
+        <Card className='p-2'>
+          <Form.Row onSubmit={submitHandler} className='d-flex  '>
+            <Form.Group as={Col} controlId='coursename'>
+              <Form.Label>
+                <h5>
+                  <strong>Course Name</strong>
+                </h5>
+              </Form.Label>
+              <Form.Control
+                type='text'
+                style={{
+                  border: 'none',
 
-        <Row className='justify-content-md-center'>
+                  borderBottom: 'solid #000 2px',
+                }}
+                value={courseName}
+                onChange={(e) => setCourseName(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='image' as={Col}>
+              <Form.Label>
+                <h5>
+                  <strong>Course Image</strong>
+                </h5>
+              </Form.Label>
+
+              <Form.Control
+                type='text'
+                placeholder='Enter course image Url'
+                value={courseImage}
+                onChange={(e) => setCourseImage(e.target.value)}
+              ></Form.Control>
+
+              <Form.File
+                id='image-file'
+                label='Choose image'
+                custom
+                onChange={uploadFileHandler}
+              ></Form.File>
+              {uploading && <Loader />}
+            </Form.Group>
+          </Form.Row>
+
+          <Col>
+            <Tabs
+              defaultActiveKey='CourseContent'
+              id='uncontrolled-tab-example'
+              className='my-4'
+              style={{ borderBottom: 'solid 1px #bebebe' }}
+            >
+              <Tab eventKey='CourseContent' title='Content'>
+                <CourseContent />
+              </Tab>
+              <Tab eventKey='CourseDescription' title='Description'>
+                <CourseDescription />
+              </Tab>
+              <Tab eventKey='CourseFeatures' title='Features'>
+                <CourseFeatures />
+              </Tab>
+            </Tabs>
+          </Col>
+        </Card>
+        {/* <Row className='justify-content-md-center'>
           <Col xs={12} md={6} xl={3}>
             <h2>Edit Course</h2>
             {loadingUpdate && <Loader />}
             {/* config this messaging stuff */}
-            {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
+        {/* {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
             {loading ? (
               <Loader />
             ) : error ? (
@@ -153,7 +231,7 @@ export const EditCourseScreen = ({ match, history }) => {
               </Form>
             )}
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </React.Fragment>
   );
