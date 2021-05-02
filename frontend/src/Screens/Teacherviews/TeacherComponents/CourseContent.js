@@ -11,16 +11,6 @@ const CourseContent = () => {
   const a = 1;
   return (
     <div>
-      <Table responsive borderless>
-        <thead>
-          <tr>
-            <th className='pr-5'>Title</th>
-            <th>Type</th>
-            <th>Duration</th>
-            <th>Views</th>
-          </tr>
-        </thead>
-      </Table>
       {a !== 0 && <ContentAccordion />}
 
       <tfoot>

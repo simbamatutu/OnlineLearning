@@ -23,6 +23,14 @@ const userSchema = mongoose.Schema(
       required: true,
       unique: true,
     },
+    numberofCourseCreated: {
+      type: Number,
+      default: 0,
+    },
+    numberofCourseEnrolled: {
+      type: Number,
+      default: 0,
+    },
     password: {
       type: String,
       required: true,
@@ -30,6 +38,15 @@ const userSchema = mongoose.Schema(
     gender: {
       type: Boolean,
     },
+    coursesCreated: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course',
+      },
+    ],
+
+    coursesEnrolled: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
+
     coursesTaught: {
       type: [Course.schema],
     },

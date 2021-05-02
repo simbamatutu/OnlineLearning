@@ -33,6 +33,7 @@ const CourseListScreen = ({ history, match }) => {
     success: successCreate,
     course: createdCourse,
   } = courseCreate;
+
   useEffect(() => {
     dispatch({ type: COURSE_CREATE_RESET });
 

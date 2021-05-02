@@ -2,11 +2,11 @@ import mongoose from 'mongoose';
 
 const courseSchema = mongoose.Schema(
   {
-    // courseCreatedBy: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   required: true,
-    //   ref: 'Teacher',
-    // },
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+
+      ref: 'User',
+    },
     courseName: {
       type: String,
     },
@@ -15,9 +15,13 @@ const courseSchema = mongoose.Schema(
       type: String,
     },
 
-    courseTeachers: {
-      type: Array,
-    },
+    courseTeachers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+
+        ref: 'User',
+      },
+    ],
 
     overview: {
       type: String,
@@ -29,6 +33,10 @@ const courseSchema = mongoose.Schema(
       type: Number,
     },
     enrolled: {
+      type: Number,
+      default: 0,
+    },
+    class: {
       type: Number,
     },
     category: {
@@ -62,6 +70,13 @@ const courseSchema = mongoose.Schema(
       type: Number,
       default: 1,
     },
+
+    courseware: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Courseware',
+      },
+    ],
   },
   {
     timestamps: true,

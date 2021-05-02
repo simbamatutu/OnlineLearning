@@ -52,10 +52,14 @@ const deleteCourse = asyncHandler(async (req, res) => {
 // @access private teacher/admin
 const createCourse = asyncHandler(async (req, res) => {
   const course = new Course({
-    courseName: 'sample name',
+    author: req.user._id,
+    courseName: 'Sample name',
+    courseTeachers: req.user._id,
     level: 0,
+    overview: 'sample description',
     courseImage: 'upload image',
     school: 0,
+    enrolled: 0,
   });
   const createdCourse = await course.save();
   res.status(201).json(createdCourse);
@@ -65,15 +69,29 @@ const createCourse = asyncHandler(async (req, res) => {
 // @route PUT /api/courses/:id
 // @access private teacher/admin
 const updateCourse = asyncHandler(async (req, res) => {
-  const { courseName, level, school, courseImage } = req.body;
+  const {
+    courseName,
+    Level,
+    school,
+    courseImage,
+    overview,
+    courseNum,
+    startingWeek,
+    endingWeek,
+    language,
+  } = req.body;
   const course = await Course.findById(req.params.id);
 
   if (course) {
     course.courseName = courseName;
-    course.level = level;
+    course.level = Level;
     course.school = school;
     course.courseImage = courseImage;
-
+    course.courseNum = courseNum;
+    course.language = language;
+    course.overview = overview;
+    course.startingWeek = startingWeek;
+    course.endingWeek = endingWeek;
     const updatedCourse = await course.save();
     res.json(course);
   } else {

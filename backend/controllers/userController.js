@@ -47,7 +47,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (userExists) {
     res.status(400);
-    throw new Error('User already exist!');
+    throw new Error('Username already exist!');
   }
 
   const user = await User.create({
@@ -83,7 +83,7 @@ const registerUser = asyncHandler(async (req, res) => {
 // @access private
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
-
+  console.log(user);
   if (user) {
     res.json({
       _id: user._id,

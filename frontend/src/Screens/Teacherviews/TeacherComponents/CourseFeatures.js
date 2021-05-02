@@ -1,10 +1,11 @@
 import React from 'react';
-import { Form, Button, Col, Row } from 'react-bootstrap';
-const CourseFeatures = () => {
+import { Form, Col, Row } from 'react-bootstrap';
+
+const CourseFeatures = ({ ...props }) => {
   return (
     <Form>
       <Form.Row>
-        <Form.Group as={Row} className='pl-3'>
+        <Form.Group as={Row} className='pl-3' controlId='formGrate'>
           <Form.Label>
             <h5>
               <strong>Type</strong>
@@ -26,77 +27,7 @@ const CourseFeatures = () => {
           </Col>
         </Form.Group>
 
-        <Form.Group as={Row} controlId='formGridState' className='ml-auto'>
-          <Form.Label>
-            <h5>
-              <strong>Level</strong>
-            </h5>
-          </Form.Label>
-          <Col>
-            <Form.Control as='select' defaultValue='Choose...'>
-              <option>Choose...</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </Form.Control>
-          </Col>
-        </Form.Group>
-      </Form.Row>
-
-      <Form.Row>
-        <Form.Group as={Col} controlId='formGridCity'>
-          <Form.Label>
-            <h5>
-              <strong>Course Number</strong>
-            </h5>
-          </Form.Label>
-          <Form.Control />
-        </Form.Group>
-
-        <Form.Group as={Col} controlId='formGridState'>
-          <Form.Label>
-            <h5>
-              <strong>Starting Week</strong>
-            </h5>
-          </Form.Label>
-          <Form.Control placeholder='Enter Starting week'></Form.Control>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId='formGridState'>
-          <Form.Label>
-            <h5>
-              <strong>Ending Week</strong>
-            </h5>
-          </Form.Label>
-          <Form.Control placeholder='Enter Ending week'></Form.Control>
-        </Form.Group>
-      </Form.Row>
-
-      <Form.Row>
-        <Form.Group as={Col} controlId='formGridCity'>
-          <Form.Label>
-            <h5>
-              <strong>Course Number</strong>
-            </h5>
-          </Form.Label>
-          <Form.Control />
-        </Form.Group>
-
-        <Form.Group as={Col} controlId='formGridState'>
-          <Form.Label>
-            <h5>
-              <strong>Language</strong>
-            </h5>
-          </Form.Label>
-          <Form.Control as='select' defaultValue='Choose...'>
-            <option>Choose...</option>
-            <option>English</option>
-            <option>Chinese</option>
-          </Form.Control>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId='formGridState'>
+        <Form.Group as={Row} controlId='formGridState' className='ml-auto pr-3'>
           <Form.Label>
             <h5>
               <strong>Class</strong>
@@ -109,6 +40,81 @@ const CourseFeatures = () => {
             <option>2019</option>
             <option>2018</option>
             <option>2017</option>
+            onChange={(event) => props.changeLevel(event.target.value)}
+            value={props.level}
+          </Form.Control>
+        </Form.Group>
+      </Form.Row>
+
+      <Form.Row>
+        <Form.Group as={Col} controlId='formGridCity'>
+          <Form.Label>
+            <h5>
+              <strong>Course Number</strong>
+            </h5>
+          </Form.Label>
+          <Form.Control
+            type='text'
+            value={props.courseNum}
+            onChange={(event) => props.changeCourseNum(event.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group as={Col} controlId='weekstart'>
+          <Form.Label>
+            <h5>
+              <strong>Starting Week</strong>
+            </h5>
+          </Form.Label>
+          <Form.Control
+            placeholder='Enter Starting week'
+            type='text'
+            onChange={(event) => props.changeStartWeek(event.target.value)}
+            value={props.startingWeek}
+          ></Form.Control>
+        </Form.Group>
+
+        <Form.Group as={Col} controlId='endweeek'>
+          <Form.Label>
+            <h5>
+              <strong>Ending Week</strong>
+            </h5>
+          </Form.Label>
+          <Form.Control
+            placeholder='Enter Ending week'
+            type='text'
+            onChange={(event) => props.changeEndWeek(event.target.value)}
+            value={props.endingWeek}
+          ></Form.Control>
+        </Form.Group>
+      </Form.Row>
+
+      <Form.Row>
+        <Form.Group as={Col} controlId='school'>
+          <Form.Label>
+            <h5>
+              <strong>School</strong>
+            </h5>
+          </Form.Label>
+          <Form.Control
+            placeholder='Enter School'
+            type='text'
+            onChange={(event) => props.changeSchool(event.target.value)}
+            value={props.school}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group as={Col} controlId='language'>
+          <Form.Label>
+            <h5>
+              <strong>Language</strong>
+            </h5>
+          </Form.Label>
+          <Form.Control as='select' defaultValue='Choose...'>
+            <option>Choose...</option>
+            <option value='English'>English</option>
+            <option value='Chinese'>Chinese</option>
+            onChange={(event) => props.changelanguage(event.target.value)}
+            value={props.language}
           </Form.Control>
         </Form.Group>
       </Form.Row>
@@ -181,6 +187,11 @@ const CourseFeatures = () => {
           </Col>
         </Form.Group>
       </Form.Row>
+      {/* <Link>
+        <Button className=' my-3 mx-2 btn' onClick={submitHandler}>
+          Save
+        </Button>
+      </Link> */}
     </Form>
   );
 };

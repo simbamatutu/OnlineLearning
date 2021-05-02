@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-
-const CourseDescription = () => {
-  const [Description, setDescription] = useState('');
+const CourseDescription = ({ ...props }) => {
   return (
     <div>
-      <p>Markdown format supported!</p>
+      <p className='text-muted'>Markdown format supported!</p>
       <textarea
         style={{
           width: '100%',
@@ -13,8 +10,8 @@ const CourseDescription = () => {
           outline: 'none',
         }}
         autoFocus
-        value={Description}
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={(event) => props.changeOverview(event.target.value)}
+        value={props.overview}
       ></textarea>
     </div>
   );

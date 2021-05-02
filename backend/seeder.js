@@ -3,9 +3,10 @@ import dotenv from 'dotenv';
 import colors from 'colors';
 import courses from './data/courses.js';
 import Course from './models/courseModel.js';
-//import students from './data/students.js';
+
 import users from './data/users.js';
-import Student from './models/studentModel.js';
+
+import Courseware from './models/coursewareModel.js';
 import User from './models/userModel.js';
 import connectDB from './config/db.js';
 
@@ -15,11 +16,11 @@ connectDB();
 const importData = async () => {
   try {
     await User.deleteMany();
-    await Student.deleteMany();
+
     await Course.deleteMany();
 
     const createdUsers = await User.insertMany(users);
-    //const createdStudents = await Student.insertMany(students);
+
     const adminUser = createdUsers[0]._id;
 
     const sampleCourse = courses.map((course) => {
@@ -38,7 +39,7 @@ const importData = async () => {
 const destoryData = async () => {
   try {
     await User.deleteMany();
-    //   await Student.deleteMany();
+
     await Course.deleteMany();
 
     console.log('Data Destory successful'.red.inverse);

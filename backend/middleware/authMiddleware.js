@@ -28,6 +28,8 @@ const protect = asyncHandler(async (req, res, next) => {
 });
 
 const isAdmin = (req, res, next) => {
+  //PETRA apply middleware
+
   if (req.user && req.user.isAdmin) {
     next();
   } else {
