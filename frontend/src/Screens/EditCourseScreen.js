@@ -4,7 +4,7 @@ import Header from '../Components/Header';
 import axios from 'axios';
 import { Form, Button, Col, Container, Card, Tabs, Tab } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { listCourseDetails, updateCourse } from '../actions/courseActions';
+import { getCourseDetails, updateCourse } from '../actions/courseActions';
 import { COURSE_UPDATE_RESET } from '../constants/courseContants';
 import Message from '../Components/Message';
 import Loader from '../Components/Loader';
@@ -48,7 +48,7 @@ export const EditCourseScreen = ({ match, history }) => {
       // history.push('/admin/course-list');
     } else {
       if (!course.courseName || course._id !== courseId) {
-        dispatch(listCourseDetails(courseId));
+        dispatch(getCourseDetails(courseId));
       } else {
         setCourseName(course.courseName);
         setcourseNum(course.courseNum);

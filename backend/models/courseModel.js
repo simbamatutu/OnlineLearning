@@ -7,6 +7,7 @@ const courseSchema = mongoose.Schema(
 
       ref: 'User',
     },
+
     courseName: {
       type: String,
     },
@@ -71,12 +72,10 @@ const courseSchema = mongoose.Schema(
       default: 1,
     },
 
-    courseware: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Courseware',
-      },
-    ],
+    courseware: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Courseware',
+    },
   },
   {
     timestamps: true,

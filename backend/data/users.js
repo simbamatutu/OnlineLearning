@@ -1,7 +1,7 @@
 import bcryptjs from 'bcryptjs';
 const teachers = [
   {
-    name: 'Peter Tosh',
+    name: 'Pete Tosh',
     loginName: 'pTosh',
     profilePic: '/resourses/dummyPerson.png',
     password: bcryptjs.hashSync('123456', 10),

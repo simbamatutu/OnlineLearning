@@ -102,7 +102,7 @@ export const createCourse = () => async (dispatch, getState) => {
   }
 };
 
-export const listCourseDetails = (id) => async (dispatch) => {
+export const getCourseDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: COURSE_DETAILS_REQUEST });
 

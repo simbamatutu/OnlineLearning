@@ -92,7 +92,7 @@ const CourseListScreen = ({ history, match }) => {
               <tr>
                 <th>Course Number</th>
                 <th>Name</th>
-                <th>Teacher(s)</th>
+                <th>Creator</th>
                 <th>School</th>
                 <th>Language</th>
                 <th>Enrolled</th>
@@ -108,9 +108,8 @@ const CourseListScreen = ({ history, match }) => {
                 <tr key={course._id}>
                   <td>{course.courseNum}</td>
                   <td>{course.courseName}</td>
-                  <td>
-                    {course.courseTeachers.map((teacher) => `${teacher}`)}
-                  </td>
+
+                  <td>TBD</td>
                   <td>{course.school}</td>
                   <td>{course.language}</td>
                   <td>{course.enrolled}</td>

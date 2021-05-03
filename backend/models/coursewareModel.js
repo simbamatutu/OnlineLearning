@@ -1,18 +1,5 @@
 import mongoose from 'mongoose';
-const subTopicSchema = mongoose.Schema(
-  {
-    subTopicTitle: String,
-    doc: String,
-    video: String,
-    course: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Course',
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
+
 const coursewareSchema = mongoose.Schema(
   {
     topicName: String,
@@ -20,7 +7,12 @@ const coursewareSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
-    subTopics: [subTopicSchema],
+    subTopics: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Subtopic',
+      },
+    ],
     course: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Course',
@@ -32,5 +24,4 @@ const coursewareSchema = mongoose.Schema(
 );
 
 const Courseware = mongoose.model('Courseware', coursewareSchema);
-
-export default { Courseware };
+export default Courseware;

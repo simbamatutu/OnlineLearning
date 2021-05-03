@@ -1,7 +1,7 @@
 import express from 'express';
 import asyncHandler from 'express-async-handler';
 import Course from '../models/courseModel.js';
-
+import Courseware from '../models/coursewareModel.js';
 // @desc Fetch app all Courses
 // @route GET /api/courses
 // @access public
@@ -14,7 +14,11 @@ const getCourses = asyncHandler(async (req, res) => {
         },
       }
     : {};
-  const courses = await Course.find({ ...keyword });
+  const courses = await Course.find({ ...keyword }).populate({
+    path: 'courseware',
+    model: Courseware,
+  });
+  console.log(courses);
   res.json(courses);
 });
 
@@ -23,6 +27,7 @@ const getCourses = asyncHandler(async (req, res) => {
 // @access public
 const getCourseById = asyncHandler(async (req, res) => {
   const course = await Course.findById(req.params.id);
+
   if (course) {
     res.json(course);
   } else {
@@ -52,16 +57,17 @@ const deleteCourse = asyncHandler(async (req, res) => {
 // @access private teacher/admin
 const createCourse = asyncHandler(async (req, res) => {
   const course = new Course({
-    author: req.user._id,
     courseName: 'Sample name',
     courseTeachers: req.user._id,
+    author: req.user._id,
     level: 0,
     overview: 'sample description',
-    courseImage: 'upload image',
+    courseImage: '/resourses/coursePic.png',
     school: 0,
     enrolled: 0,
   });
   const createdCourse = await course.save();
+
   res.status(201).json(createdCourse);
 });
 

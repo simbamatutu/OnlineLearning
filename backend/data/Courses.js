@@ -6,6 +6,8 @@ const Courses = [
       'Microsoft Excel for Beginner and Intermediate Users: Become Proficient with the world’s #1 productivity software.Accounting, Financial Statements, and Financial Ratios: Making Sense of Debits and Credits, Profit and Loss statements, Balance Sheets, Liquidity, Solvency, Profitability, and Growth Financial Ratios Finance Basics: Interest Rates, Financial Math Calculations, Loan Calculations, Time Value of Money, Present and Future Value of Cash Flows Finance Basics: Interest Rates, Financial Math Calculations, Loan Calculations, Time Value of Money, Present and Future Value of Cash Flows Finance Basics: Interest Rates, Financial Math Calculations, Loan Calculations, Time Value of Money, Present and Future Value of Cash Flows',
     school: '3',
     level: '4',
+    author: '608f7fb2a73dcd21588fae83',
+
     courseNum: 'BJ401081',
     category: ['Business'],
     maxCapacity: '200',
@@ -15,6 +17,7 @@ const Courses = [
     startingWeek: '1',
     endingWeek: '17',
     exam: 'Yes',
+    courseware: '608f86356fa59a590cadd7fd',
     language: 'Chinese',
     assingments: 'Yes',
   },
