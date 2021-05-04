@@ -17,6 +17,7 @@ router
   .delete(protect, isAdmin, deleteCourse)
   .put(protect, updateCourse, isAdmin); /// PETRA REMEMBER TO PUT BCK MIDDLEWARE
 router.route('/courses/:id').get(getCourseById);
+
 //router.route('/courses/:name/:id').get(getCourseById);
 
 export default router;

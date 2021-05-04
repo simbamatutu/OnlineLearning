@@ -1,35 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateCourse } from '../../../actions/courseActions';
+import { createCourseware } from '../../../actions/coursewareActions';
 import { Link } from 'react-router-dom';
-import { COURSE_UPDATE_RESET } from '../../../constants/courseContants';
+
 import ContentAccordion from './ContentAccordion';
 import CourseNameModal from './CourseNameModal';
 
-const CourseContent = () => {
+const CourseContent = ({ courseId }) => {
   const dispatch = useDispatch();
-  const courseDetails = useSelector((state) => state.courseDetails);
-  const { loading, error, course } = courseDetails;
+  const coursewareCreate = useSelector((state) => state.coursewareCreate);
+  const { loading, error, success, courseware } = coursewareCreate;
   const [modalShow, setModalShow] = React.useState(false);
-  const courseUpdate = useSelector((state) => state.courseUpdate);
-  const {
-    loading: loadingUpdate,
-    error: errorUpdate,
-    success: successUpdate,
-  } = courseUpdate;
-  const a = 1;
+
+  const createCoursewareHandler = () => {
+    dispatch(createCourseware(courseId));
+    setModalShow(true);
+  };
   return (
     <div>
-      {a !== 0 && <ContentAccordion />}
+      <ContentAccordion courseId={courseId} />
 
       <tfoot>
         <tr>
-          <Link className='p-3' onClick={() => setModalShow(true)}>
+          <Link className='p-3' onClick={() => createCoursewareHandler()}>
             Add Topic
           </Link>
         </tr>
       </tfoot>
-      <CourseNameModal show={modalShow} onHide={() => setModalShow(false)} />
+      {courseware && (
+        <CourseNameModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          courseware={courseware}
+        />
+      )}
     </div>
   );
 };

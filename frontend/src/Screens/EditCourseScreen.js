@@ -47,18 +47,20 @@ export const EditCourseScreen = ({ match, history }) => {
 
       // history.push('/admin/course-list');
     } else {
-      if (!course.courseName || course._id !== courseId) {
-        dispatch(getCourseDetails(courseId));
-      } else {
-        setCourseName(course.courseName);
-        setcourseNum(course.courseNum);
-        setstartingWeek(course.startingWeek);
-        setCourseImage(course.courseImage);
-        setLevel(course.level);
-        setlanguage(course.language);
-        setendingWeek(course.endingWeek);
-        setschool(course.school);
-        setoverview(course.overview);
+      if (course) {
+        if (!course.courseName || course._id !== courseId) {
+          dispatch(getCourseDetails(courseId));
+        } else {
+          setCourseName(course.courseName);
+          setcourseNum(course.courseNum);
+          setstartingWeek(course.startingWeek);
+          setCourseImage(course.courseImage);
+          setLevel(course.level);
+          setlanguage(course.language);
+          setendingWeek(course.endingWeek);
+          setschool(course.school);
+          setoverview(course.overview);
+        }
       }
     }
   }, [courseId, course, dispatch, successUpdate, history]);
@@ -84,6 +86,7 @@ export const EditCourseScreen = ({ match, history }) => {
       setUploading(false);
     }
   };
+
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -174,7 +177,7 @@ export const EditCourseScreen = ({ match, history }) => {
               style={{ borderBottom: 'solid 1px #bebebe' }}
             >
               <Tab eventKey='CourseContent' title='Content'>
-                <CourseContent />
+                <CourseContent courseId={courseId} />
               </Tab>
               <Tab eventKey='CourseDescription' title='Description'>
                 <CourseDescription

@@ -18,7 +18,18 @@ import {
   userDeleteReducer,
   userUpdateReducer,
 } from './reducers/userReducers';
+import {
+  coursewareCreateReducer,
+  coursewareDetailsReducer,
+  coursewareListReducer,
+  coursewareUpdateReducer,
+} from './reducers/coursewareReducers';
 
+import {
+  subTopicCreateReducer,
+  subTopicListReducer,
+  subTopicUpdateReducer,
+} from './reducers/subTopicReducers';
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
@@ -31,8 +42,15 @@ const reducer = combineReducers({
   courseDelete: courseDeleteReducer,
   courseCreate: courseCreateReducer,
   courseDetails: courseDetailsReducer,
+  coursewareCreate: coursewareCreateReducer,
 
+  coursewareDetails: coursewareDetailsReducer,
+  coursewareUpdate: coursewareUpdateReducer,
+  coursewareList: coursewareListReducer,
   courseUpdate: courseUpdateReducer,
+  subTopicCreate: subTopicCreateReducer,
+  subTopicUpdate: subTopicUpdateReducer,
+  subTopicList: subTopicListReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

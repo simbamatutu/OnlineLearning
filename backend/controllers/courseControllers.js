@@ -1,7 +1,7 @@
 import express from 'express';
 import asyncHandler from 'express-async-handler';
 import Course from '../models/courseModel.js';
-import Courseware from '../models/coursewareModel.js';
+
 // @desc Fetch app all Courses
 // @route GET /api/courses
 // @access public
@@ -14,11 +14,7 @@ const getCourses = asyncHandler(async (req, res) => {
         },
       }
     : {};
-  const courses = await Course.find({ ...keyword }).populate({
-    path: 'courseware',
-    model: Courseware,
-  });
-  console.log(courses);
+  const courses = await Course.find({ ...keyword });
   res.json(courses);
 });
 
