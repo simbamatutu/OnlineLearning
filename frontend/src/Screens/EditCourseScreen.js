@@ -23,9 +23,9 @@ export const EditCourseScreen = ({ match, history }) => {
   const [overview, setoverview] = useState('');
   const [Level, setLevel] = useState('');
   const [school, setschool] = useState('');
-  const [quiz, setquiz] = useState('');
-  const [exam, setexam] = useState('');
-  const [assignment, setassignment] = useState('');
+  // const [quiz, setquiz] = useState('');
+  // const [exam, setexam] = useState('');
+  // const [assignment, setassignment] = useState('');
   const [endingWeek, setendingWeek] = useState(0);
   // const [message, setMessage] = useState(null);
   // const redirect = location.search ? location.search.split('=')[1] : '/';
@@ -113,11 +113,10 @@ export const EditCourseScreen = ({ match, history }) => {
         <Button className=' my-3 mx-2 btn'>Back</Button>
       </LinkContainer>
       <Container className='p-0 mt-1'>
-        <Link>
-          <Button className=' my-3 mx-2 btn' onClick={submitHandler}>
-            Save
-          </Button>
-        </Link>
+        <Button className=' my-3 mx-2 btn' onClick={submitHandler}>
+          Save
+        </Button>
+
         <Link to='/login'>Discard</Link>
         <Card className='p-2'>
           {loadingUpdate && <Loader />}

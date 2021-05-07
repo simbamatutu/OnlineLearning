@@ -94,7 +94,7 @@ export const listSubTopics = (id) => async (dispatch) => {
       type: SUBTOPIC_LIST_REQUEST,
     });
 
-    const { data } = await axios.get(`/api/subtopic/${id}`);
+    const { data } = await axios.get(`/api/subtopic`);
 
     dispatch({
       type: SUBTOPIC_LIST_SUCCESS,

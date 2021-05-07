@@ -54,7 +54,6 @@ const CourseListScreen = ({ history, match }) => {
     successCreate,
     createdCourse,
   ]);
-
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure?')) {
       dispatch(deleteCourse(id));

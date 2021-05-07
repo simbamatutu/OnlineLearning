@@ -1,10 +1,14 @@
 import React from 'react';
-import {} from 'react-bootstrap';
+import { Card, Row } from 'react-bootstrap';
 
 export default function Discussions(props) {
   return (
-    <div>
-      <h1>Forum</h1>
-    </div>
+    <Card>
+      <Card.Body style={{ minHeight: '70vh', paddingBottom: '0' }}>
+        <Row className='d-flex justify-content-around '>
+          <p className='d-flex align-self-center'>(no forum)</p>
+        </Row>
+      </Card.Body>
+    </Card>
   );
 }

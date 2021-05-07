@@ -10,8 +10,6 @@ const createCourseware = asyncHandler(async (req, res) => {
   const courseware = new Courseware({
     topicName: 'Sample Topic name',
     course: req.params.id,
-    numberofTopics: 1,
-    subTopics: [],
   });
   const createdCourseware = await courseware.save();
 
@@ -23,6 +21,7 @@ const createCourseware = asyncHandler(async (req, res) => {
 // @access public
 const getCoursewares = asyncHandler(async (req, res) => {
   const coursewares = await Courseware.find({ course: req.params.id });
+
   //PETRA error 400
 
   res.json(coursewares);
@@ -82,8 +81,11 @@ const updateSubTopic = asyncHandler(async (req, res) => {
 // @route GET /api/courses:id
 // @access public
 const getSubTopic = asyncHandler(async (req, res) => {
-  const subTopics = await Subtopic.find({ courseware: req.params.id });
-  console.log(req.params.id);
+  const subTopics = await Subtopic.find().populate({
+    path: 'courseware',
+    model: 'Courseware',
+  });
+
   //PETRA error 400
 
   res.json(subTopics);

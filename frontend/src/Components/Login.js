@@ -14,15 +14,24 @@ export const Login = ({ location, history }) => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
+
   useEffect(() => {
+    console.log(userInfo);
     if (userInfo) {
-      history.push(redirect);
+      if (userInfo.isStudent) {
+        history.push('/learn');
+      } else if (userInfo.isTeacher) {
+        history.push('/teach');
+      } else {
+        history.push(redirect);
+      }
+    } else {
+      return loading;
     }
-  }, [history, userInfo, redirect]);
+  }, [history, userInfo, loading, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    //dispatch login
     dispatch(login(loginName, password));
   };
 

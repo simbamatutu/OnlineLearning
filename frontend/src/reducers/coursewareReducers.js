@@ -63,7 +63,7 @@ export const coursewareUpdateReducer = (state = { courseware: {} }, action) => {
 export const coursewareListReducer = (state = { coursewares: [] }, action) => {
   switch (action.type) {
     case COURSEWARE_LIST_REQUEST:
-      return { loading: true };
+      return { loading: true, coursewares: [] };
     case COURSEWARE_LIST_SUCCESS:
       return { loading: false, coursewares: action.payload };
     case COURSEWARE_LIST_FAIL:

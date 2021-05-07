@@ -1,30 +1,43 @@
 import React from 'react';
-import { Row, Col, Card } from 'react-bootstrap';
+import { Row, Card } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import Loader from './Loader';
+import Message from './Message';
+import Progress from '../Screens/Studentviews/StudentComponents/Progress';
 export default function Announcements(props) {
+  const userDetails = useSelector((state) => state.userLogin);
+  const { userInfo, loading, error } = userDetails;
   return (
-    <Card>
-      <Card.Header>
-        <Row>
-          <Col className='float-left'>
-            <Row>
-              <h3>Welcome Back,</h3>
+    <>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant='danger'>{error}</Message>
+      ) : (
+        <Card>
+          <Card.Header>
+            <Row className='d-flex justify-content-between'>
+              <div>
+                <h5>
+                  <strong>Welcome Back</strong>
+                </h5>
+                <strong>{userInfo.name}</strong>
+              </div>
+              <div>
+                <div>
+                  <h6>Progress</h6>
+                </div>
+                <Progress value={60} />
+              </div>
             </Row>
-            <Row>
-              <h4>Romanoff.</h4>
+          </Card.Header>
+          <Card.Body style={{ minHeight: '70vh', paddingBottom: '0' }}>
+            <Row className='d-flex justify-content-around '>
+              <p className='d-flex align-self-center'>(no announcements)</p>
             </Row>
-          </Col>
-          <Col className='float-right'>
-            <strong>your Progress</strong>
-          </Col>
-        </Row>
-      </Card.Header>
-      <Card.Body>
-        <Row>
-          <Col>
-            <h1>lorem Lorem lorem loem</h1>
-          </Col>
-        </Row>
-      </Card.Body>
-    </Card>
+          </Card.Body>
+        </Card>
+      )}
+    </>
   );
 }

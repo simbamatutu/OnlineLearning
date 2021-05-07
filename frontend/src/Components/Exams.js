@@ -1,9 +1,13 @@
 import React from 'react';
-import {} from 'react-bootstrap';
+import { Card, Row } from 'react-bootstrap';
 export default function Exams(props) {
   return (
-    <div>
-      <h1>Exams</h1>
-    </div>
+    <Card>
+      <Card.Body style={{ minHeight: '70vh', paddingBottom: '0' }}>
+        <Row className='d-flex justify-content-around '>
+          <p className='d-flex align-self-center'>(no exam)</p>
+        </Row>
+      </Card.Body>
+    </Card>
   );
 }

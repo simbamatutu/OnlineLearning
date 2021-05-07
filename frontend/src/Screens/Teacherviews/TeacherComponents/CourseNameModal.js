@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateCourseware } from '../../../actions/coursewareActions';
-import { COURSEWARE_UPDATE_RESET } from '../../../constants/coursewarecontants';
+import { COURSEWARE_LIST_RESET } from '../../../constants/coursewarecontants';
 
 const CourseNameModal = ({ ...props }) => {
   const [topic, setTopic] = useState(props.courseware.topicName);
-  const coursewareUpdate = useSelector((state) => state.coursewareUpdate);
-  const { loading, error, success } = coursewareUpdate;
+
   const dispatch = useDispatch();
   const submitHandler = () => {
     //e.preventDefault();
-    console.log('455');
+
     dispatch(
       updateCourseware({
         _id: props.courseware._id,
@@ -19,6 +18,7 @@ const CourseNameModal = ({ ...props }) => {
       })
     );
     props.onHide();
+    dispatch({ type: COURSEWARE_LIST_RESET });
   };
 
   return (

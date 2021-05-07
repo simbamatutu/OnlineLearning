@@ -11,4 +11,5 @@ router
   .post(protect, createSubtopic, isAdmin)
   .put(protect, updateSubTopic, isAdmin)
   .get(getSubTopic);
+router.route('/').get(getSubTopic);
 export default router;

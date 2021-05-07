@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCourseware } from '../../../actions/coursewareActions';
-import { Link } from 'react-router-dom';
 
 import ContentAccordion from './ContentAccordion';
 import CourseNameModal from './CourseNameModal';
+import { Button } from 'react-bootstrap';
 
 const CourseContent = ({ courseId }) => {
   const dispatch = useDispatch();
   const coursewareCreate = useSelector((state) => state.coursewareCreate);
-  const { loading, error, success, courseware } = coursewareCreate;
+  const { courseware } = coursewareCreate;
   const [modalShow, setModalShow] = React.useState(false);
 
   const createCoursewareHandler = () => {
@@ -20,13 +20,16 @@ const CourseContent = ({ courseId }) => {
     <div>
       <ContentAccordion courseId={courseId} />
 
-      <tfoot>
-        <tr>
-          <Link className='p-3' onClick={() => createCoursewareHandler()}>
-            Add Topic
-          </Link>
-        </tr>
-      </tfoot>
+      <td>
+        <Button
+          variant='link'
+          className='p-3'
+          onClick={() => createCoursewareHandler()}
+        >
+          Add Topic
+        </Button>
+      </td>
+
       {courseware && (
         <CourseNameModal
           show={modalShow}
