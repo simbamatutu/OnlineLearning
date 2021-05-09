@@ -101,7 +101,7 @@ export default function Courseware({ match }) {
                       <Announcements />
                     </Tab.Pane>
                     <Tab.Pane eventKey='lessons'>
-                      {/* <Lessons courseId={match.params.id} /> */}
+                      <Lessons courseId={match.params.id} />
                     </Tab.Pane>
                     <Tab.Pane eventKey='assignments'>
                       <Assignments />

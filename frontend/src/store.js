@@ -29,6 +29,7 @@ import {
   subTopicCreateReducer,
   subTopicListReducer,
   subTopicUpdateReducer,
+  sectionDetailsReducer,
 } from './reducers/subTopicReducers';
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -45,6 +46,8 @@ const reducer = combineReducers({
   coursewareCreate: coursewareCreateReducer,
 
   coursewareDetails: coursewareDetailsReducer,
+  sectionDetails: sectionDetailsReducer,
+
   coursewareUpdate: coursewareUpdateReducer,
   coursewareList: coursewareListReducer,
   courseUpdate: courseUpdateReducer,

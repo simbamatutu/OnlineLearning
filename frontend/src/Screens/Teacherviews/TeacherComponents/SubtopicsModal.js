@@ -17,7 +17,7 @@ const SubtopicsModal = ({ ...props }) => {
 
   const submitHandler = () => {
     //e.preventDefault();
-    console.log('455');
+
     dispatch(
       updateSubTopic({
         _id: props.subtopic._id,

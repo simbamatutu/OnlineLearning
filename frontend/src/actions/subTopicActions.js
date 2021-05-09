@@ -4,6 +4,8 @@ import {
   SUBTOPIC_CREATE_FAIL,
   SUBTOPIC_CREATE_REQUEST,
   SUBTOPIC_CREATE_SUCCESS,
+  SUBTOPIC_DETAILS_FAIL,
+  SUBTOPIC_DETAILS_REQUEST,
   SUBTOPIC_DETAILS_SUCCESS,
   SUBTOPIC_LIST_FAIL,
   SUBTOPIC_LIST_REQUEST,
@@ -88,7 +90,7 @@ export const updateSubTopic = (courseware) => async (dispatch, getState) => {
   }
 };
 
-export const listSubTopics = (id) => async (dispatch) => {
+export const listSubTopics = () => async (dispatch) => {
   try {
     dispatch({
       type: SUBTOPIC_LIST_REQUEST,
@@ -103,6 +105,27 @@ export const listSubTopics = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: SUBTOPIC_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getSectionDetails = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: SUBTOPIC_DETAILS_REQUEST });
+
+    const { data } = await axios.get(`/api/subtopic/${id}`);
+
+    dispatch({
+      type: SUBTOPIC_DETAILS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: SUBTOPIC_DETAILS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

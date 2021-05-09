@@ -16,7 +16,6 @@ export const Login = ({ location, history }) => {
   const { loading, error, userInfo } = userLogin;
 
   useEffect(() => {
-    console.log(userInfo);
     if (userInfo) {
       if (userInfo.isStudent) {
         history.push('/learn');

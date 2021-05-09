@@ -16,6 +16,7 @@ const CourseContent = ({ courseId }) => {
     dispatch(createCourseware(courseId));
     setModalShow(true);
   };
+
   return (
     <div>
       <ContentAccordion courseId={courseId} />

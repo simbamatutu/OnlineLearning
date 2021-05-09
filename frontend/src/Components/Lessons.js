@@ -1,75 +1,83 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Tab, Tabs, Card, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { listCoursewares } from '../actions/coursewareActions';
-import { listSubTopics } from '../actions/subTopicActions';
+import { getSectionDetails } from '../actions/subTopicActions';
 import Loader from './Loader';
 import Message from './Message';
+import Videoplayer from './Videoplayer';
+import Documentviewer from './Documentviewer';
 const Lessons = ({ courseId }) => {
-  const subTopicList = useSelector((state) => state.subTopicList);
-  const { subTopics } = subTopicList;
   const coursewareList = useSelector((state) => state.coursewareList);
   const { coursewares, loading, error } = coursewareList;
 
+  const sectionDetails = useSelector((state) => state.sectionDetails);
+  const {
+    section,
+    loading: sectionLoading,
+    error: sectionError,
+  } = sectionDetails;
+
+  const [chapter, setchapter] = useState([]);
+  const [subTopic, setsubTopic] = useState('');
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(listCoursewares(courseId));
-    dispatch(listSubTopics());
-  }, [dispatch, courseId]);
+    dispatch(getSectionDetails(subTopic));
+  }, [dispatch, courseId, subTopic]);
+  const chapterHandler = (e) => {
+    setchapter(e.target.value);
+  };
+  const subTopicHandler = (e) => {
+    setsubTopic(e.target.value);
+  };
 
   return (
-    <Card>
+    <Card className='pl-1'>
       <Form className='pt-2 pl-2 pb-2'>
-        <Form.Row>
-          {loading ? (
-            <Loader />
-          ) : error ? (
-            <Message variant='danger'>{error}</Message>
-          ) : (
-            <>
-              {coursewares &&
-                coursewares.map((chapter) => (
-                  <React.Fragment key={chapter._id}>
-                    <option>{chapter.topicName}</option>
-                    <Form.Group
-                      controlId='topicDropdown'
-                      className='pr-2 pb-1 mb-0'
-                    >
-                      <Form.Label className='m-0'>Chapter</Form.Label>
-
-                      <Form.Control
-                        as='select'
-                        defaultValue='Choose...'
-                        className='p-1'
-                      ></Form.Control>
-                    </Form.Group>
-
-                    <Form.Group
-                      controlId='subTopicDown'
-                      className='pr-2 pb-1 mb-0'
-                    >
-                      <Form.Label className='m-0'>Section</Form.Label>
-                      <Form.Control
-                        as='select'
-                        defaultValue='Choose...'
-                        className='p-1'
-                      >
-                        {subTopics.map((section) => (
-                          <React.Fragment key={section._id}>
-                            {section.courseware === courseId && (
-                              <option>{section.subTopicTitle}</option>
-                            )}
-                          </React.Fragment>
-                        ))}
-                      </Form.Control>
-                    </Form.Group>
-                  </React.Fragment>
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message variant='danger'>{error}</Message>
+        ) : (
+          <Form.Row>
+            <Form.Group controlId='topicDropdown' className='pr-2 pb-1 mb-0'>
+              <Form.Label className='m-0'>Chapter</Form.Label>
+              <Form.Control
+                as='select'
+                defaultValue='Choose...'
+                className='p-1'
+                onChange={chapterHandler}
+              >
+                {coursewares.map((chapter) => (
+                  <option key={chapter._id} value={chapter}>
+                    {chapter.topicName}
+                  </option>
                 ))}
-            </>
-          )}
-        </Form.Row>
+              </Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='sectionDropdown' className='pr-2 pb-1 mb-0'>
+              <Form.Label className='m-0'>Section</Form.Label>
+              <Form.Control
+                as='select'
+                defaultValue='Choose...'
+                className='p-1'
+                onChange={subTopicHandler}
+              >
+                {coursewares.map((chapter) =>
+                  chapter.subTopics.map((title) => (
+                    <option key={title._id} value={title._id}>
+                      {title.subTopicTitle}
+                    </option>
+                  ))
+                )}
+              </Form.Control>
+            </Form.Group>
+          </Form.Row>
+        )}
       </Form>
       <Tabs
         fill
@@ -78,7 +86,16 @@ const Lessons = ({ courseId }) => {
         className='m-0'
         id='courseware-tab'
       >
-        <Tab eventKey='video' title='Media' style={{ minHeight: '70vh' }}></Tab>
+        <Tab
+          eventKey='video'
+          title='Media'
+          className='p-1'
+          style={{ minHeight: '70vh' }}
+        >
+          {section && (
+            <Videoplayer url={'https://www.youtube.com/watch?v=Rq5SEhs9lws'} />
+          )}
+        </Tab>
         <Tab
           eventKey='ppt'
           title='Document'
@@ -90,29 +107,3 @@ const Lessons = ({ courseId }) => {
 };
 
 export default Lessons;
-{
-  /*
-  subTopics.map((subTopic) => (
-    <tr key={subTopic._id}>
-      {subTopic.courseware === id && (
-        <>
-          <td className='pr-5'>{subTopic.subTopicTitle}</td>
-          <td className='pr-5'>TBD</td>
-          <td>TBD</td>
-          <td>TBD</td>
-        </>
-      )}
-    </tr>
-  ));
-
-  ///////////////////
-  {coursewares ? (
-        coursewares.map((courseware) => ( )
-          <>
-            <React.Fragment key={courseware._id} />
-            <Accordion>
-              <Card>
-                <Accordion.Toggle as={Card.Header} eventKey='0'>
-                  {courseware.topicName}
-      */
-}

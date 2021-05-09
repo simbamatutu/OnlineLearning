@@ -30,8 +30,6 @@ const getCourseById = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error('Coures  not found');
   }
-
-  res.json(courses);
 });
 
 // @desc delete course

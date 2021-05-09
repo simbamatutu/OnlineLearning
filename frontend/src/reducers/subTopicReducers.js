@@ -3,6 +3,9 @@ import {
   SUBTOPIC_CREATE_REQUEST,
   SUBTOPIC_CREATE_RESET,
   SUBTOPIC_CREATE_SUCCESS,
+  SUBTOPIC_DETAILS_FAIL,
+  SUBTOPIC_DETAILS_REQUEST,
+  SUBTOPIC_DETAILS_SUCCESS,
   SUBTOPIC_LIST_FAIL,
   SUBTOPIC_LIST_REQUEST,
   SUBTOPIC_LIST_RESET,
@@ -52,6 +55,19 @@ export const subTopicListReducer = (state = { subTopics: [] }, action) => {
       return { loading: false, error: action.payload };
     case SUBTOPIC_LIST_RESET:
       return { subTopics: [] };
+    default:
+      return state;
+  }
+};
+
+export const sectionDetailsReducer = (state = { section: {} }, action) => {
+  switch (action.type) {
+    case SUBTOPIC_DETAILS_REQUEST:
+      return { ...state, loading: true };
+    case SUBTOPIC_DETAILS_SUCCESS:
+      return { loading: false, section: action.payload };
+    case SUBTOPIC_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
     default:
       return state;
   }
