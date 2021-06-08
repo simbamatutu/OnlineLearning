@@ -13,7 +13,7 @@ const width =
   document.documentElement.clientWidth ||
   document.body.clientWidth;
 
-const Header = () => {
+const Header = ({ history }) => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -94,7 +94,11 @@ const Header = () => {
             <LinkContainer to='/profile'>
               <NavDropdown.Item>Profile</NavDropdown.Item>
             </LinkContainer>
-            <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+            <NavDropdown.Item onClick={logoutHandler}>
+              <LinkContainer to='/'>
+                <NavDropdown.Item>Logout</NavDropdown.Item>
+              </LinkContainer>
+            </NavDropdown.Item>
           </NavDropdown>
         ) : (
           <Nav>

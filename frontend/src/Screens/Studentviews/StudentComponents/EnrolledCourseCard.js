@@ -1,6 +1,8 @@
 import React from 'react';
 import { Row, Col, Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 function EnrolledCourseCard({ course }) {
+  const id = '608f96efb465f96948569f97'; //PETRA
   return (
     <div>
       <Card
@@ -10,25 +12,20 @@ function EnrolledCourseCard({ course }) {
         }}
       >
         <Row className='m-2'>
-          <Card.Img
-            variant='top'
-            src={course.courseImage}
-            style={{ width: '15rem' }}
-          />
-
+          <Col>
+            <Card.Img variant='top' src={course.courseImage} />
+          </Col>
           <Col>
             <Row>
               <Card.Title className='ml-auto'>
                 <strong>{course.courseName}</strong>
               </Card.Title>
             </Row>
-            {
-              <Row>
-                {course.category.map((course) => (
-                  <Card.Subtitle key={course._id}>{course}</Card.Subtitle>
-                ))}
-              </Row>
-            }
+            {/* <Row>
+            {course.category.map((course) => (
+              <Card.Subtitle key={course._id}>{course}</Card.Subtitle>
+            ))}
+          </Row> */}
           </Col>
         </Row>
         <Row className='m-1'>
@@ -38,15 +35,22 @@ function EnrolledCourseCard({ course }) {
           </Col>
           <Col className='m-2'>
             <Row className='justify-content-center'>{course.enrolled}</Row>
-            <Row className='justify-content-center'>Attendes</Row>
+            <Row className='justify-content-center'>Total Hours</Row>
           </Col>
           <Col className='m-2'>
             <Row className='justify-content-center'>35</Row>
-            <Row className='justify-content-center'>Finished</Row>
+            <Row className='justify-content-center'>Remaining</Row>
           </Col>
           <Col className='m-2'>
             <Row>
-              <Button className='justify-content-center'>View</Button>
+              <Link to={`/courses/courseware/${id}`}>
+                <Button
+                  style={{ backgroundColor: '#005bac', border: 'none' }}
+                  className='float-right my-3 mx-2'
+                >
+                  View
+                </Button>
+              </Link>
             </Row>
           </Col>
         </Row>

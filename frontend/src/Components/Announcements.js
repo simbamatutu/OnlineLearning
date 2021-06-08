@@ -21,7 +21,11 @@ export default function Announcements(props) {
                 <h5>
                   <strong>Welcome Back</strong>
                 </h5>
-                <strong>{userInfo.name}</strong>
+                {userInfo ? (
+                  <strong>{userInfo.name}</strong>
+                ) : (
+                  <strong>Student</strong>
+                )}
               </div>
               <div>
                 <div>

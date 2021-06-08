@@ -1,8 +1,9 @@
 import React from 'react';
 
 import { Row, Col, Button, Card } from 'react-bootstrap';
-
+import { Link } from 'react-router-dom';
 function Teachercoursecard({ course }) {
+  const id = '60bfb4148080a259fc3ee72e';
   return (
     <Card
       className='my-3 p-1 rounded'
@@ -42,7 +43,9 @@ function Teachercoursecard({ course }) {
         </Col>
         <Col className='m-2'>
           <Row>
-            <Button className='justify-content-center'>Edit</Button>
+            <Link to={`/admin/courses/${id}/edit`}>
+              <Button className='justify-content-center'>Edit</Button>{' '}
+            </Link>
           </Row>
         </Col>
       </Row>

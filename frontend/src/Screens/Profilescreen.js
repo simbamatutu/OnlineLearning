@@ -62,7 +62,7 @@ const Profilescreen = ({ location, history }) => {
   return (
     <React.Fragment>
       <Header />
-      <Row className='justify-content-md-center'>
+      <Row className='justify-content-md-center' style={{ padding: '1ch' }}>
         <Col xs={12} md={6} xl={3}>
           <h2>Update Profile</h2>
           {message && <Message variant='danger'>{message}</Message>}

@@ -39,7 +39,7 @@ const StudentHomeScreen = ({ history }) => {
           <CardGroup>
             {enrolledCourses ? (
               enrolledCourses.map((course) => (
-                <Col sm={12} md={12} lg={12} xl={12} key={course._id}>
+                <Col sm={12} md={6} lg={6} xl={6} key={course._id}>
                   <EnrolledCourseCard course={course} />
                 </Col>
               ))
@@ -49,7 +49,6 @@ const StudentHomeScreen = ({ history }) => {
           </CardGroup>
         )}
       </Container>
-      <Footer />
     </div>
   );
 };

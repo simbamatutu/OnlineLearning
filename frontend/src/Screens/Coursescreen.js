@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+import pic from '../img/dummyPerson.png';
 import Header from '../Components/Header';
 import Teacher from '../Components/Teacher';
 import Footer from '../Components/Footer';
@@ -61,7 +61,7 @@ export default function Coursescreen({ match }) {
                     width: '4rem',
                   }}
                   roundedCircle
-                  src={course.teacherImg}
+                  src={pic}
                   alt='teacherImage'
                 />
 

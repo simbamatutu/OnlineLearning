@@ -92,15 +92,13 @@ const Lessons = ({ courseId }) => {
           className='p-1'
           style={{ minHeight: '70vh' }}
         >
-          {section && (
-            <Videoplayer url={'https://www.youtube.com/watch?v=Rq5SEhs9lws'} />
-          )}
+          <Videoplayer
+            url={'https://www.youtube.com/watch?v=XB4MIexjvY0&t=1s'}
+          />
         </Tab>
-        <Tab
-          eventKey='ppt'
-          title='Document'
-          style={{ minHeight: '70vh' }}
-        ></Tab>
+        <Tab eventKey='ppt' title='Document' style={{ minHeight: '70vh' }}>
+          <Documentviewer />
+        </Tab>
       </Tabs>
     </Card>
   );
