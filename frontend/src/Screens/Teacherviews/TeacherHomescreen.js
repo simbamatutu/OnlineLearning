@@ -14,6 +14,7 @@ import { createCourse } from '../../actions/courseActions';
 
 export default function TeacherHomescreen({ history }) {
   const dispatch = useDispatch();
+  const idd = '609105a1b48af635ec79d14f'; ///PETRA
   const userDetails = useSelector((state) => state.userDetails);
   const userLogin = useSelector((state) => state.userLogin);
   const courseCreate = useSelector((state) => state.courseCreate);
@@ -57,7 +58,7 @@ export default function TeacherHomescreen({ history }) {
       <Container className='mt-3 pt-3' style={{ height: '80vh' }}>
         <Row>
           <Col>
-            <LinkContainer to={``}>
+            <Link to={`admin/courses/${idd}/edit`}>
               <Button
                 variant='primary'
                 className='btn-sm mr-2'
@@ -66,7 +67,7 @@ export default function TeacherHomescreen({ history }) {
                 Create
                 <i className='fas fa-edit'></i>
               </Button>
-            </LinkContainer>
+            </Link>
             <Link to='/create-course'>Import</Link>
           </Col>
           <Col>

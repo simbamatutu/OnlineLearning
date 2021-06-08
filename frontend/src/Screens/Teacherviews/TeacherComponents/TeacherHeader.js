@@ -14,7 +14,7 @@ const TeacherHeader = () => {
           <i className='fas fa-edit'></i>
         </Button>
 
-        <Link to='/create-course'> Import</Link>
+        <Link to='/create-course'> iomport</Link>
       </Col>
       <Col>
         <Row className='d-flex justify-content-end'>
