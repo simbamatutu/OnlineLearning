@@ -31,6 +31,7 @@ app.use('/api/upload', uploadRoutes);
 
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
 //Error handler
 app.use((req, res, next) => {
   const error = new Error(`Not Found - ${req.originalUrl}`);
@@ -46,8 +47,8 @@ app.use((err, req, res, next) => {
     stack: process.env.NODE_ENV === 'production' ? null : err.stack,
   });
 });
-
 ///end of error handle
+
 const PORT = process.env.PORT || 5000;
 app.listen(
   PORT,

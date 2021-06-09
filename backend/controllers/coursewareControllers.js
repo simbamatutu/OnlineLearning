@@ -1,10 +1,12 @@
 import express from 'express';
-import asyncHandler from 'express-async-handler';
+
 import Course from '../models/courseModel.js';
 import Courseware from '../models/coursewareModel.js';
 import Subtopic from '../models/SubtopicModel.js';
+
+import asyncHandler from 'express-async-handler';
 // @desc create new course
-// @route POST /api/courses
+// @route POST /api/coursewares
 // @access private teacher/admin
 const createCourseware = asyncHandler(async (req, res) => {
   const courseware = new Courseware({
@@ -12,7 +14,6 @@ const createCourseware = asyncHandler(async (req, res) => {
     course: req.params.id,
   });
   const createdCourseware = await courseware.save();
-
   res.status(201).json(createdCourseware);
 });
 
